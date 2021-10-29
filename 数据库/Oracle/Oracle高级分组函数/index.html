@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            Oracle 高级分组函数 |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Oracle 高级分组函数</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-09-25 17:58:43
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/">Oracle</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Oracle/">Oracle</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%AB%98%E7%BA%A7%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0/">高级分组函数</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <blockquote>
+<p>本文主要讲解 <code>ROLLUP, CUBE, GROUPING SETS</code>的主要用法，这些函数可以理解为<code>GroupBy</code>分组函数封装后的精简用法，相当于多个<code>union all</code> 的组合显示效果，但是要比 多个union all的效率要高。</p>
+</blockquote>
+<blockquote>
+<p>其实这些函数在时间的程序开发中应用的并不多，至少在我工作的多年时间中没用过几次，因为现在的各种开发工具/平台都自带了这些高级分组统计功能，使用的方便性及美观性都比这些要好。但如果临时查下数据，用这些函数还是不错的。</p>
+</blockquote>
+<h3 id="创建测试环境"><a href="#创建测试环境" class="headerlink" title="创建测试环境"></a>创建测试环境</h3><p>在线数据库 <a class="link"   target="_blank" rel="noopener" href="http://sqlfiddle.com/" >http://sqlfiddle.com/<i class="fas fa-external-link-alt"></i></a> </p>
+<p><strong>1.   创建表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> EMP2</span><br><span class="line">(</span><br><span class="line">  ID       NUMBER,  <span class="comment">/**员工编号*/</span></span><br><span class="line">  NAME     VARCHAR2(<span class="number">20</span>), <span class="comment">/**姓名*/</span></span><br><span class="line">  SEX     VARCHAR2(<span class="number">3</span>),  <span class="comment">/**性别*/</span></span><br><span class="line">  HIREDATE <span class="type">DATE</span>,         <span class="comment">/**入职日期*/</span></span><br><span class="line">  BASE    VARCHAR2(<span class="number">20</span>), <span class="comment">/**工作母地*/</span></span><br><span class="line">  DEPT    VARCHAR2(<span class="number">20</span>), <span class="comment">/**所在部门*/</span></span><br><span class="line">  SAL     NUMBER        <span class="comment">/**月工资*/</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.   插入测试数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">107</span>, <span class="string">&#x27;小月&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, to_date(<span class="string">&#x27;01-09-2013&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;北京&#x27;</span>,<span class="string">&#x27;营运&#x27;</span>, <span class="number">9000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">108</span>, <span class="string">&#x27;小美&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, to_date(<span class="string">&#x27;01-06-2011&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;上海&#x27;</span>,<span class="string">&#x27;营运&#x27;</span>, <span class="number">11000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">101</span>, <span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, to_date(<span class="string">&#x27;01-01-2011&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;北京&#x27;</span>,<span class="string">&#x27;财务&#x27;</span>, <span class="number">8000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">102</span>, <span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, to_date(<span class="string">&#x27;01-01-2012&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;北京&#x27;</span>,<span class="string">&#x27;营运&#x27;</span>, <span class="number">15000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">103</span>, <span class="string">&#x27;王五&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, to_date(<span class="string">&#x27;01-01-2013&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;上海&#x27;</span>,<span class="string">&#x27;营运&#x27;</span>, <span class="number">6000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">104</span>, <span class="string">&#x27;赵六&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, to_date(<span class="string">&#x27;01-01-2014&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;上海&#x27;</span>,<span class="string">&#x27;财务&#x27;</span>, <span class="number">10000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">105</span>, <span class="string">&#x27;小花&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, to_date(<span class="string">&#x27;01-08-2014&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;上海&#x27;</span>,<span class="string">&#x27;财务&#x27;</span>, <span class="number">4000</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> emp2 (ID, NAME, SEX, HIREDATE,BASE, DEPT, SAL)</span><br><span class="line"><span class="keyword">values</span> (<span class="number">106</span>, <span class="string">&#x27;小静&#x27;</span>, <span class="string">&#x27;女&#x27;</span>, to_date(<span class="string">&#x27;01-01-2015&#x27;</span>, <span class="string">&#x27;dd-mm-yyyy&#x27;</span>), <span class="string">&#x27;北京&#x27;</span>,<span class="string">&#x27;财务&#x27;</span>, <span class="number">6000</span>);</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3.   查看一下刚才插入的数据</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> emp2;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|  ID | NAME | SEX |             HIREDATE | BASE | DEPT |   SAL |</span><br><span class="line">|-----|------|-----|----------------------|------|------|-------|</span><br><span class="line">| 107 |   小月 |   女 | 2013-09-01T00:00:00Z |   北京 |   营运 |  9000 |</span><br><span class="line">| 108 |   小美 |   女 | 2011-06-01T00:00:00Z |   上海 |   营运 | 11000 |</span><br><span class="line">| 101 |   张三 |   男 | 2011-01-01T00:00:00Z |   北京 |   财务 |  8000 |</span><br><span class="line">| 102 |   李四 |   男 | 2012-01-01T00:00:00Z |   北京 |   营运 | 15000 |</span><br><span class="line">| 103 |   王五 |   男 | 2013-01-01T00:00:00Z |   上海 |   营运 |  6000 |</span><br><span class="line">| 104 |   赵六 |   男 | 2014-01-01T00:00:00Z |   上海 |   财务 | 10000 |</span><br><span class="line">| 105 |   小花 |   女 | 2014-08-01T00:00:00Z |   上海 |   财务 |  4000 |</span><br><span class="line">| 106 |   小静 |   女 | 2015-01-01T00:00:00Z |   北京 |   财务 |  6000 |</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.   先看下普通分组的效果</strong></p>
+<p>按照地区统计每个部门的总工资</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> base, dept;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">| BASE | DEPT | SUM(SAL) |</span><br><span class="line">|------|------|----------|</span><br><span class="line">|   北京 |   营运 |    24000 |</span><br><span class="line">|   上海 |   营运 |    17000 |</span><br><span class="line">|   北京 |   财务 |    14000 |</span><br><span class="line">|   上海 |   财务 |    14000 |</span><br></pre></td></tr></table></figure>
+
+<h3 id="ROLLUP-累计累加"><a href="#ROLLUP-累计累加" class="headerlink" title="ROLLUP(累计累加)"></a>ROLLUP(累计累加)</h3><blockquote>
+<p><code>ROLLUP</code>是对<code>group by</code>的扩展，因此，它只能出现在<code>group by</code>子句中，依赖于分组的列，对每个分组会生成汇总数据, <code>rollup</code>和<code>group by</code>联合一起使用，达到了按<code>group by</code>列顺序分组，并且实现小计和合计的功能。<code>rollup</code>分组还是有序的，先全部分组，然后对每个分组小计，最后合计。</p>
+</blockquote>
+<blockquote>
+<p><code>rollup</code>中列的顺序不同，则统计的结果不同。因为它是按列从右递减分组的。</p>
+</blockquote>
+<blockquote>
+<p>比如 <code>Group by ROLLUP(A, B, C)</code>，首先会对**(A、B、C)<strong>进行<code>GROUP BY</code>，然后对group by进行<code>GROUP BY</code>，然后是</strong>(A)**进行<code>GROUP BY</code>，最后对全表进行<code>GROUP BY</code>操作</p>
+</blockquote>
+<p>按照地区统计每个部门的总工资，按工作母地汇总，再合计</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>(base, dept);</span><br></pre></td></tr></table></figure>
+
+<p> 结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 |     营运 |    17000 |</span><br><span class="line">|     上海 |     财务 |    14000 |</span><br><span class="line">|     上海 | (null) |    31000 |</span><br><span class="line">|     北京 |     营运 |    24000 |</span><br><span class="line">|     北京 |     财务 |    14000 |</span><br><span class="line">|     北京 | (null) |    38000 |</span><br><span class="line">| (null) | (null) |    69000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果相当于</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> base, dept</span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> base, <span class="keyword">null</span>, <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> base, <span class="keyword">null</span> </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span> </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">null</span>, <span class="keyword">null</span></span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>, <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果颠倒下rollup顺序则结果如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>(dept,base);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 |     营运 |    17000 |</span><br><span class="line">|     北京 |     营运 |    24000 |</span><br><span class="line">| (null) |     营运 |    41000 |</span><br><span class="line">|     上海 |     财务 |    14000 |</span><br><span class="line">|     北京 |     财务 |    14000 |</span><br><span class="line">| (null) |     财务 |    28000 |</span><br><span class="line">| (null) | (null) |    69000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在实际查询中，有的小计或合计我们不需要，那么就要使用局部rollup,局部rollup就是将需要固定统计的列放在group by中，而不是放在rollup中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> dept, <span class="keyword">rollup</span>(base);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|   BASE | DEPT | SUM(SAL) |</span><br><span class="line">|--------|------|----------|</span><br><span class="line">|     上海 |   营运 |    17000 |</span><br><span class="line">|     北京 |   营运 |    24000 |</span><br><span class="line">| (null) |   营运 |    41000 |</span><br><span class="line">|     上海 |   财务 |    14000 |</span><br><span class="line">|     北京 |   财务 |    14000 |</span><br><span class="line">| (null) |   财务 |    28000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p>与<code>group by rollup(dept, base)</code>相比：去掉了最后一行的汇总，因为每次汇总要么是<code>dept, base</code>，要么是<code>dept, null</code> ，<code>dept</code>是固定的。</p>
+<p>如果只希望看到合计则可以这样写：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>((base, dept));</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 |     营运 |    17000 |</span><br><span class="line">|     上海 |     财务 |    14000 |</span><br><span class="line">|     北京 |     营运 |    24000 |</span><br><span class="line">|     北京 |     财务 |    14000 |</span><br><span class="line">| (null) | (null) |    69000 |</span><br></pre></td></tr></table></figure>
+
+<h3 id="CUBE-交叉列表"><a href="#CUBE-交叉列表" class="headerlink" title="CUBE(交叉列表)"></a>CUBE(交叉列表)</h3><blockquote>
+<p><code>CUBE</code>也是对<code>group by</code>运算的一种扩展，它比<code>rollup</code>扩展更加精细，组合类型更多，<code>rollup</code>是按组合的列从右到左递减分组计算，而<code>CUBE</code>则是对所有可能的组合情况进行分组，这样分组的情况更多，覆盖所有的可能分组，并计算所有可能的分组的小计。</p>
+</blockquote>
+<blockquote>
+<p>对于<code>CUBE</code>来说，列的名字只要一样，那么顺序无所谓，结果都是一样的，因为<code>cube</code>是各种可能情况的组合,只不过统计的结果顺序不同而已。但是对于<code>rollup</code>来说，列的顺序不同，则结果不同。</p>
+</blockquote>
+<p>比如对工作母地和部门的交叉统计</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">cube</span>(base, dept) <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>, <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 |     营运 |    17000 |</span><br><span class="line">|     上海 |     财务 |    14000 |</span><br><span class="line">|     上海 | (null) |    31000 |</span><br><span class="line">|     北京 |     营运 |    24000 |</span><br><span class="line">|     北京 |     财务 |    14000 |</span><br><span class="line">|     北京 | (null) |    38000 |</span><br><span class="line">| (null) |     营运 |    41000 |</span><br><span class="line">| (null) |     财务 |    28000 |</span><br><span class="line">| (null) | (null) |    69000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p>部分<code>CUBE</code>和部分<code>ROLLUP</code>类似，把需要固定统计的列放到<code>group by</code>中，不放到cube中就可以了。</p>
+<p>如果<code>cube</code>中只有一个列，那么和<code>rollup</code>的结果一致</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> dept, <span class="keyword">cube</span>(base) <span class="keyword">order</span> <span class="keyword">by</span> <span class="number">1</span>, <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|   BASE | DEPT | SUM(SAL) |</span><br><span class="line">|--------|------|----------|</span><br><span class="line">|     上海 |   营运 |    17000 |</span><br><span class="line">|     上海 |   财务 |    14000 |</span><br><span class="line">|     北京 |   营运 |    24000 |</span><br><span class="line">|     北京 |   财务 |    14000 |</span><br><span class="line">| (null) |   营运 |    41000 |</span><br><span class="line">| (null) |   财务 |    28000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>rollup</code>和<code>cube</code>区别：</p>
+<p>如果是<code>ROLLUP(A,B, C)</code>的话，<code>GROUP BY</code>顺序</p>
+<p>(A、B、C)</p>
+<p>(A、B)</p>
+<p>(A)</p>
+<p>最后对全表进行<code>GROUPBY</code>操作。</p>
+<p>如果是<code>GROUP BY CUBE(A, B, C)</code>，<code>GROUP BY</code>顺序<br>(A、B、C)</p>
+<p>(A、B)</p>
+<p>(A、C)</p>
+<p>(A)，</p>
+<p>(B、C)</p>
+<p>(B)</p>
+<p>(C)，</p>
+<p>最后对全表进行GROUPBY操作。</p>
+<h3 id="GROUPING-SETS-小计"><a href="#GROUPING-SETS-小计" class="headerlink" title="GROUPING SETS(小计)"></a>GROUPING SETS(小计)</h3><blockquote>
+<p>对<code>group by</code>的另一个扩展，专门对分组列分别进行小计计算，不包括合计。使用方式和<code>rollup</code>和<code>cube</code>一样，都是放在<code>group by</code>中。</p>
+</blockquote>
+<p>比如需要分别统计工作母地与部门的合计：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">grouping</span> sets(base, dept);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 | (null) |    31000 |</span><br><span class="line">|     北京 | (null) |    38000 |</span><br><span class="line">| (null) |     营运 |    41000 |</span><br><span class="line">| (null) |     财务 |    28000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p>等价于</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, <span class="keyword">null</span>, <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> base, <span class="keyword">null</span> </span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span> </span><br><span class="line"><span class="keyword">select</span> <span class="keyword">null</span>, dept, <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">null</span>, dept;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>理解了<code>grouping sets</code>的原理我们用他实现<code>rollup</code>的功能也是可以的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> base, dept, <span class="built_in">sum</span>(sal) <span class="keyword">from</span> emp2 <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">grouping</span> sets((base, dept), dept, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|   BASE |   DEPT | SUM(SAL) |</span><br><span class="line">|--------|--------|----------|</span><br><span class="line">|     上海 |     营运 |    17000 |</span><br><span class="line">|     北京 |     营运 |    24000 |</span><br><span class="line">| (null) |     营运 |    41000 |</span><br><span class="line">|     上海 |     财务 |    14000 |</span><br><span class="line">|     北京 |     财务 |    14000 |</span><br><span class="line">| (null) |     财务 |    28000 |</span><br><span class="line">| (null) | (null) |    69000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="GROUPING"><a href="#GROUPING" class="headerlink" title="GROUPING"></a>GROUPING</h3><blockquote>
+<p>在以上例子中，是用<code>rollup</code>和<code>cube</code>函数都会对结果集产生<code>null</code>，这时候可用<code>grouping</code>函数来确认该记录是由哪个字段得出来的<code>grouping</code>函数用法，带一个参数，参数为字段名，结果是根据该字段得出来的就返回<strong>1</strong>，反之返回<strong>0</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> decode(<span class="keyword">grouping</span>(base), <span class="number">1</span>, <span class="string">&#x27;所有地区&#x27;</span>, base) base,</span><br><span class="line">       decode(<span class="keyword">grouping</span>(dept), <span class="number">1</span>, <span class="string">&#x27;所有部门&#x27;</span>, dept) dept,</span><br><span class="line">       <span class="built_in">sum</span>(sal)</span><br><span class="line">  <span class="keyword">from</span> emp2</span><br><span class="line"> <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">rollup</span>(dept, base);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">| BASE | DEPT | SUM(SAL) |</span><br><span class="line">|------|------|----------|</span><br><span class="line">|   上海 |   营运 |    17000 |</span><br><span class="line">|   北京 |   营运 |    24000 |</span><br><span class="line">| 所有地区 |   营运 |    41000 |</span><br><span class="line">|   上海 |   财务 |    14000 |</span><br><span class="line">|   北京 |   财务 |    14000 |</span><br><span class="line">| 所有地区 |   财务 |    28000 |</span><br><span class="line">| 所有地区 | 所有部门 |    69000 |</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>参考</strong>：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/u014558001/article/details/42387929#" >https://blog.csdn.net/u014558001/article/details/42387929#<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Oracle 高级分组函数</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2020-09-25 17:58:43</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/数据库/Oracle/Oracle高级分组函数/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E5%9B%9B%E5%A4%A7%E6%8E%92%E5%90%8D%E5%87%BD%E6%95%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Oracle 四大排名函数</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E5%8E%BB%E9%87%8D%E5%8F%96%E7%AC%AC%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Oracle去重取第一条数据</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="nav-text">创建测试环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROLLUP-%E7%B4%AF%E8%AE%A1%E7%B4%AF%E5%8A%A0"><span class="nav-text">ROLLUP(累计累加)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CUBE-%E4%BA%A4%E5%8F%89%E5%88%97%E8%A1%A8"><span class="nav-text">CUBE(交叉列表)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUPING-SETS-%E5%B0%8F%E8%AE%A1"><span class="nav-text">GROUPING SETS(小计)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUPING"><span class="nav-text">GROUPING</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

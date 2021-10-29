@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            Oracle相关 |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Oracle相关</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2019-12-13 23:18:43
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/">Oracle</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Oracle/">Oracle</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h4><h5 id="空表不能导出"><a href="#空表不能导出" class="headerlink" title="空表不能导出"></a>空表不能导出</h5><blockquote>
+<p>Oracle从11g开始有一个新的特性，当表中从未拥有过数据，那么不分配segment，以节省空间。当使用数据泵导出数据的时候，需要注意，如果表未分配segment，那么无法导出。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 单张表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> sys_log <span class="keyword">allocate</span> extent;  </span><br><span class="line"><span class="comment">-- 查询出所有数据量为零的表</span></span><br><span class="line"><span class="keyword">select</span> table_name <span class="keyword">from</span> user_tables <span class="keyword">where</span> num_rows<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span><span class="string">&#x27;alter table &#x27;</span><span class="operator">||</span>table_name<span class="operator">||</span><span class="string">&#x27; allocate extent;&#x27;</span><span class="keyword">from</span> user_tables <span class="keyword">where</span> num_rows<span class="operator">=</span><span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行生成的sql</strong></p>
+<h5 id="数据泵的使用"><a href="#数据泵的使用" class="headerlink" title="数据泵的使用"></a>数据泵的使用</h5><p><a class="link"   target="_blank" rel="noopener" href="http://valten.gitee.io/blog/Oracle/Oracle%E6%95%B0%E6%8D%AE%E6%B3%B5%E4%BD%BF%E7%94%A8/" >数据泵的使用<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="表空间相关操作"><a href="#表空间相关操作" class="headerlink" title="表空间相关操作"></a>表空间相关操作</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建数据表空间</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE TBS_HCZZZYV2_DATA DATAFILE</span><br><span class="line"><span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzzy_data_01.dbf&#x27;</span> SIZE <span class="number">20000</span>m</span><br><span class="line"><span class="comment">--AUTOEXTEND ON NEXT 100m MAXSIZE UNLIMITED</span></span><br><span class="line">LOGGING ONLINE</span><br><span class="line">EXTENT MANAGEMENT <span class="keyword">LOCAL</span> AUTOALLOCATE</span><br><span class="line">BLOCKSIZE <span class="number">8</span>K</span><br><span class="line">SEGMENT SPACE MANAGEMENT AUTO</span><br><span class="line">FLASHBACK <span class="keyword">ON</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 扩展表空间</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>SPACE TBS_HCZZZYV2_DATA</span><br><span class="line"><span class="keyword">ADD</span> DATAFILE <span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzzy_data_02.dbf&#x27;</span></span><br><span class="line">SIZE <span class="number">20000</span>m AUTOEXTEND <span class="keyword">ON</span> NEXT <span class="number">100</span>m MAXSIZE UNLIMITED;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建索引表空间</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span>SPACE TBS_HCZZYWV2_INDEX DATAFILE </span><br><span class="line"><span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzyw_index_01.dbf&#x27;</span> SIZE <span class="number">20000</span>m </span><br><span class="line"><span class="comment">--AUTOEXTEND ON NEXT 100m MAXSIZE UNLIMITED</span></span><br><span class="line">LOGGING ONLINE</span><br><span class="line">EXTENT MANAGEMENT <span class="keyword">LOCAL</span> AUTOALLOCATE</span><br><span class="line">BLOCKSIZE <span class="number">8</span>K</span><br><span class="line">SEGMENT SPACE MANAGEMENT AUTO</span><br><span class="line">FLASHBACK <span class="keyword">ON</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 扩展表空间</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>SPACE TBS_HCZZYWV2_INDEX</span><br><span class="line"><span class="keyword">ADD</span> DATAFILE <span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzyw_index_02.dbf&#x27;</span></span><br><span class="line">SIZE <span class="number">20000</span>m </span><br><span class="line"><span class="comment">--AUTOEXTEND ON NEXT 100m MAXSIZE UNLIMITED;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建临时表空间</span></span><br><span class="line"><span class="keyword">CREATE</span> TEMPORARY TABLESPACE TBS_HCZZYWV2_TMP TEMPFILE </span><br><span class="line"><span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzyw_tmp_01.dbf&#x27;</span> SIZE <span class="number">20000</span>m </span><br><span class="line"><span class="comment">--AUTOEXTEND ON NEXT 100m MAXSIZE UNLIMITED</span></span><br><span class="line">TABLESPACE <span class="keyword">GROUP</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">EXTENT MANAGEMENT <span class="keyword">LOCAL</span> UNIFORM SIZE <span class="number">1</span>M;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 扩展表空间</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>SPACE TBS_HCZZYWV2_TMP</span><br><span class="line"><span class="keyword">ADD</span> TEMPFILE <span class="string">&#x27;/u01/app/oracle/oradata/hisign/tbs_hczzyw_tmp_02.dbf&#x27;</span></span><br><span class="line">SIZE <span class="number">20000</span>m </span><br><span class="line"><span class="comment">--AUTOEXTEND ON NEXT 100m MAXSIZE UNLIMITED;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 删除指定表空间</span></span><br><span class="line"><span class="keyword">drop</span> tablespace TBS_MPP_SYSTEM including contents <span class="keyword">and</span> datafiles;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建用户，指定默认表空间</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> ywv2 IDENTIFIED <span class="keyword">BY</span> ywv2 <span class="keyword">DEFAULT</span> TABLESPACE TBS_HCZZYWV2_DATA</span><br><span class="line">TEMPORARY TABLESPACE TBS_HCZZYWV2_TMP</span><br><span class="line">PROFILE <span class="keyword">DEFAULT</span> ACCOUNT UNLOCK;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询表空间使用情况</span></span><br><span class="line"><span class="keyword">select</span> a.tablespace_name <span class="keyword">as</span> name,</span><br><span class="line">       total,</span><br><span class="line">       <span class="keyword">free</span>,</span><br><span class="line">       total <span class="operator">-</span> <span class="keyword">free</span> <span class="keyword">as</span> used,</span><br><span class="line">       round(<span class="keyword">free</span> <span class="operator">/</span> <span class="built_in">sum</span>(total) <span class="keyword">over</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> a.tablespace_name), <span class="number">4</span>) <span class="operator">*</span> <span class="number">100</span> freeRate,</span><br><span class="line">       round((total <span class="operator">-</span> <span class="keyword">free</span>) <span class="operator">/</span> <span class="built_in">sum</span>(total) <span class="keyword">over</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> a.tablespace_name), <span class="number">4</span>) <span class="operator">*</span> <span class="number">100</span> usedRate</span><br><span class="line">  <span class="keyword">from</span> (<span class="keyword">select</span> tablespace_name, <span class="built_in">sum</span>(bytes) <span class="operator">/</span> <span class="number">1024</span> <span class="operator">/</span> <span class="number">1024</span> <span class="keyword">as</span> total</span><br><span class="line">          <span class="keyword">from</span> dba_data_files</span><br><span class="line">         <span class="keyword">group</span> <span class="keyword">by</span> tablespace_name) a,</span><br><span class="line">       (<span class="keyword">select</span> tablespace_name, <span class="built_in">sum</span>(bytes) <span class="operator">/</span> <span class="number">1024</span> <span class="operator">/</span> <span class="number">1024</span> <span class="keyword">as</span> <span class="keyword">free</span></span><br><span class="line">          <span class="keyword">from</span> dba_free_space</span><br><span class="line">         <span class="keyword">group</span> <span class="keyword">by</span> tablespace_name) b</span><br><span class="line"> <span class="keyword">where</span> a.tablespace_name <span class="operator">=</span> b.tablespace_name</span><br><span class="line"> <span class="keyword">order</span> <span class="keyword">by</span> a.tablespace_name</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="用户、权限相关"><a href="#用户、权限相关" class="headerlink" title="用户、权限相关"></a>用户、权限相关</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建用户，指定默认表空间</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> zyv2 IDENTIFIED <span class="keyword">BY</span> zyv2 <span class="keyword">DEFAULT</span> TABLESPACE TBS_HCZZZYV2_DATA</span><br><span class="line">TEMPORARY TABLESPACE TBS_HCZZZYV2_TMP</span><br><span class="line">PROFILE <span class="keyword">DEFAULT</span> ACCOUNT UNLOCK;</span><br><span class="line"></span><br><span class="line"><span class="operator">&lt;&lt;</span><span class="operator">&lt;&lt;</span><span class="operator">&lt;&lt;</span><span class="operator">&lt;</span> HEAD:source<span class="operator">/</span>_posts<span class="operator">/</span>Oracle相关.md</span><br><span class="line"><span class="comment">-- 给用户赋权</span></span><br><span class="line"><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span><span class="operator">=</span></span><br><span class="line"><span class="comment">--修改用户密码</span></span><br><span class="line">sqlplus <span class="operator">/</span> <span class="keyword">as</span> sysdba</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> XXX IDENTIFIED <span class="keyword">BY</span> NEWPWD;</span><br><span class="line"></span><br><span class="line"><span class="comment">--给用户赋权</span></span><br><span class="line"><span class="operator">&gt;&gt;</span><span class="operator">&gt;&gt;</span><span class="operator">&gt;&gt;</span><span class="operator">&gt;</span> <span class="number">851</span>b8daea073711bbc846417be4868bc5c1a2cb2:source<span class="operator">/</span>_posts<span class="operator">/</span>Oracle相关随笔.md</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CONNECT</span>,RESOURCE,<span class="keyword">CREATE</span> DATABASE LINK,<span class="keyword">CREATE</span> <span class="keyword">VIEW</span>,<span class="keyword">CREATE</span> SYNONYM <span class="keyword">TO</span> zyv2;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 创建用户并授权</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> CSIFMIS IDENTIFIED <span class="keyword">BY</span> CSIFMIS;</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CREATE</span> <span class="keyword">USER</span>,<span class="keyword">DROP</span> <span class="keyword">USER</span>,<span class="keyword">ALTER</span> <span class="keyword">USER</span> ,<span class="keyword">CREATE</span> <span class="keyword">ANY</span> <span class="keyword">VIEW</span> ,<span class="keyword">DROP</span> <span class="keyword">ANY</span> <span class="keyword">VIEW</span>,EXP_FULL_DATABASE,IMP_FULL_DATABASE,DBA,<span class="keyword">CONNECT</span>,RESOURCE,<span class="keyword">CREATE</span> SESSION <span class="keyword">TO</span> CSIFMIS;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- oracle授权表权限给用户</span></span><br><span class="line">命令：<span class="keyword">grant</span> xxx权限 <span class="keyword">on</span> <span class="keyword">Table</span> <span class="keyword">to</span> <span class="keyword">USER</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span>,<span class="keyword">insert</span>,update,<span class="keyword">delete</span>,<span class="keyword">all</span> <span class="keyword">on</span> 表名 <span class="keyword">to</span> 用户名</span><br><span class="line">例如：将test表的查询权限赋予tom这个用户</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> test <span class="keyword">to</span> tom</span><br><span class="line"><span class="comment">-----------------------------------</span></span><br><span class="line"><span class="comment">-- 授权</span></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> tb_xw_jjxx <span class="keyword">to</span> h2yw;</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_tables;</span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;grant select on &#x27;</span><span class="operator">||</span>table_name<span class="operator">||</span><span class="string">&#x27; to h2yw&#x27;</span> <span class="keyword">from</span> user_tables;</span><br><span class="line"><span class="comment">-- 收回授权</span></span><br><span class="line"><span class="keyword">revoke</span> <span class="keyword">select</span> <span class="keyword">on</span> tb_xw_jjxx <span class="keyword">from</span> h2yw;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Excel批量生成sql"><a href="#Excel批量生成sql" class="headerlink" title="Excel批量生成sql"></a>Excel批量生成sql</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">=</span>CONCATENATE(&quot;update SIMPLE_CASE c set c.occurrcode = &#x27;&quot;,J2,&quot;&#x27; WHERE C.JJBH=&#x27;&quot;,A2,&quot;&#x27;;&quot;)</span><br><span class="line"><span class="operator">=</span>CONCATENATE(&quot;insert into operate_type values(sys_guid(),&#x27;&quot;,B2,&quot;&#x27; ,&#x27;&quot;,C2,&quot;&#x27;,&#x27;&quot;,D2,&quot;&#x27; ,&#x27;&quot;,E2,&quot;&#x27;);&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">sql</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sys_dict (id, dict_level, dict_key, parent_key, root_key, dict_value1, remark, del) </span><br><span class="line">              <span class="keyword">values</span> (sys_guid(), <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;&quot;,A254,&quot;&#x27;</span>, <span class="string">&#x27;ZDLXDM&#x27;</span>, <span class="string">&#x27;ZDLXDM&#x27;</span>, <span class="string">&#x27;&quot;,B254,&quot;&#x27;</span>, <span class="string">&#x27;&quot;,C254,&quot;&#x27;</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"># excel函数</span><br><span class="line"><span class="operator">=</span>CONCATENATE(&quot;&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="命令行导入导出dmp"><a href="#命令行导入导出dmp" class="headerlink" title="命令行导入导出dmp"></a>命令行导入导出dmp</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 导入dmp</span></span><br><span class="line">imp CSIFMIS/CSIFMIS@192.168.41.73：1521/csifmis \</span><br><span class="line">file=C:\csifmis.dmp log=C:\csifmis.log full=y ignore=y</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 导出dmp</span></span><br><span class="line">exp CSIFMIS/CSIFMIS@192.168.41.73：1521/csifmis \</span><br><span class="line">file=C:\csifmis.dmp log=C:\csifmis.log buffer=65536 full=y</span><br><span class="line"><span class="meta">#</span><span class="bash"> 导出指定表</span></span><br><span class="line">exp CSIFMIS/CSIFMIS@192.168.41.73：1521/csifmis \</span><br><span class="line">file=C:\csifmis.dmp tables=(table1,table2)</span><br><span class="line"><span class="meta">#</span><span class="bash"> rows=n 只导出表结构不导出数据</span></span><br><span class="line">exp CSIFMIS/CSIFMIS@192.168.41.73：1521/csifmis \</span><br><span class="line">file=C:\csifmis.dmp log=C:\csifmis.log rows=n</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="递归查询"><a href="#递归查询" class="headerlink" title="递归查询"></a>递归查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 本条记录的id是下一条记录的父id,遍历子节点</span></span><br><span class="line"><span class="keyword">SELECT</span> T.CID, T.CNAME, T.PARENT_ID, LEVEL</span><br><span class="line"> <span class="keyword">FROM</span> Z_ORG T</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> T.CNAME <span class="operator">=</span> <span class="string">&#x27;加利福尼亚州&#x27;</span></span><br><span class="line"><span class="keyword">CONNECT</span> <span class="keyword">BY</span> PRIOR T.CID <span class="operator">=</span> T.PARENT_ID</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> LEVEL <span class="keyword">ASC</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 本条记录的父id是下一条记录的id,遍历根节点</span></span><br><span class="line"><span class="keyword">SELECT</span> T.CID, T.CNAME, T.PARENT_ID, LEVEL</span><br><span class="line"> <span class="keyword">FROM</span> Z_ORG T</span><br><span class="line"><span class="keyword">START</span> <span class="keyword">WITH</span> T.CNAME <span class="operator">=</span> <span class="string">&#x27;加利福尼亚州&#x27;</span></span><br><span class="line"><span class="keyword">CONNECT</span> <span class="keyword">BY</span> PRIOR T.PARENT_ID <span class="operator">=</span> T.CID</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> LEVEL <span class="keyword">ASC</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>start with</strong> 子句：遍历起始条件，有个小技巧，如果要查父结点，这里可以用子结点的列，反之亦然。</p>
+</blockquote>
+<blockquote>
+<p><strong>connect by</strong> 子句：连接条件。关键词prior，prior跟父节点列parentid放在一起，就是往父结点方向遍历;prior跟子结点列subid放在一起，则往叶子结点方向遍历，</p>
+</blockquote>
+<blockquote>
+<p><strong>parentid、subid</strong> 两列谁放在“=”前都无所谓，关键是prior跟谁在一起。</p>
+</blockquote>
+<blockquote>
+<p><strong>order by</strong> 子句：排序，不用多说。</p>
+</blockquote>
+<h4 id="锁表"><a href="#锁表" class="headerlink" title="锁表"></a>锁表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.查看数据库被锁的表</span></span><br><span class="line"><span class="keyword">select</span> a.object_name,</span><br><span class="line">      b.session_id,</span><br><span class="line">      c.serial#,</span><br><span class="line">      c.program,</span><br><span class="line">      c.username,</span><br><span class="line">      c.command,</span><br><span class="line">      c.machine,</span><br><span class="line">      c.lockwait</span><br><span class="line"> <span class="keyword">from</span> all_objects a, v$locked_object b, v$session c</span><br><span class="line"><span class="keyword">where</span> a.object_id <span class="operator">=</span> b.object_id</span><br><span class="line">  <span class="keyword">and</span> c.sid <span class="operator">=</span> b.session_id;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2.查看表被锁的原因</span></span><br><span class="line"><span class="keyword">select</span> l.session_id sid,      </span><br><span class="line">      s.serial#,      </span><br><span class="line">      l.locked_mode,      </span><br><span class="line">      l.oracle_username,      </span><br><span class="line">      s.user#,      </span><br><span class="line">      l.os_user_name,      </span><br><span class="line">      s.machine,      </span><br><span class="line">      s.terminal,      </span><br><span class="line">      a.sql_text,      </span><br><span class="line">      a.action</span><br><span class="line"> <span class="keyword">from</span> v$sqlarea a, v$session s, v$locked_object l</span><br><span class="line"><span class="keyword">where</span> l.session_id <span class="operator">=</span> s.sid      </span><br><span class="line">  <span class="keyword">and</span> s.prev_sql_addr <span class="operator">=</span> a.address</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sid, s.serial#;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3.解除被锁定的表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">system</span> kill session <span class="string">&#x27;SID,SERIAL#&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="用户过期设置"><a href="#用户过期设置" class="headerlink" title="用户过期设置"></a>用户过期设置</h4><p>查看要过期用户使用的profile文件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username, profile <span class="keyword">from</span> dba_users；</span><br></pre></td></tr></table></figure>
+
+<p>查看指定的概要文件密码有效期</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dba_profiles <span class="keyword">where</span> profile<span class="operator">=</span><span class="string">&#x27;DEFAULT&#x27;</span> <span class="keyword">and</span> resource_name<span class="operator">=</span><span class="string">&#x27;PASSWORD_LIFE_TIME&#x27;</span>；</span><br></pre></td></tr></table></figure>
+
+<p>将密码有效期修改为无限制</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">default</span> limit password_life_time unlimited；</span><br></pre></td></tr></table></figure>
+
+<p>解锁被锁定的账户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> DXZP_HENAN ACCOUNT UNLOCK;</span><br></pre></td></tr></table></figure>
+
+<p>设置尝试输入次数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">DEFAULT</span> limit FAILED_LOGIN_ATTEMPTS <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<p>或者不限制输入次数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">DEFAULT</span> limit FAILED_LOGIN_ATTEMPTS UNLIMITED;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="字符集编码"><a href="#字符集编码" class="headerlink" title="字符集编码"></a>字符集编码</h4><p>查看Oracle数据库的编码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> nls_database_parameters <span class="keyword">where</span> <span class="keyword">parameter</span> <span class="operator">=</span><span class="string">&#x27;NLS_CHARACTERSET&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看Oracle客户端编码：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> nls_instance_parameters <span class="keyword">where</span> <span class="keyword">parameter</span><span class="operator">=</span><span class="string">&#x27;NLS_LANGUAGE&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="常用查询"><a href="#常用查询" class="headerlink" title="常用查询"></a>常用查询</h4><h5 id="查询Oracle目录："><a href="#查询Oracle目录：" class="headerlink" title="查询Oracle目录："></a>查询Oracle目录：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dba_directories；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询数据文件："><a href="#查询数据文件：" class="headerlink" title="查询数据文件："></a>查询数据文件：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dba_data_files；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询表空间文件："><a href="#查询表空间文件：" class="headerlink" title="查询表空间文件："></a>查询表空间文件：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username, temporary_tablespace <span class="keyword">from</span> dba_users；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="dba-users查询所有用户信息："><a href="#dba-users查询所有用户信息：" class="headerlink" title="dba_users查询所有用户信息："></a>dba_users查询所有用户信息：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dba_users;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询所有表空间的大小："><a href="#查询所有表空间的大小：" class="headerlink" title="查询所有表空间的大小："></a>查询所有表空间的大小：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tablespace_name, <span class="built_in">sum</span>(bytes)<span class="operator">/</span><span class="number">1024</span><span class="operator">/</span><span class="number">1024</span> <span class="keyword">from</span> dba_data_files <span class="keyword">group</span> <span class="keyword">by</span> tablespace_name;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询空闲表空间的大小："><a href="#查询空闲表空间的大小：" class="headerlink" title="查询空闲表空间的大小："></a>查询空闲表空间的大小：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> tablespace_name, <span class="built_in">sum</span>(bytes)<span class="operator">/</span><span class="number">1024</span><span class="operator">/</span><span class="number">1024</span> <span class="keyword">from</span> dba_free_space <span class="keyword">group</span> <span class="keyword">by</span> tablespace_name;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询当前用户能访问到的表："><a href="#查询当前用户能访问到的表：" class="headerlink" title="查询当前用户能访问到的表："></a>查询当前用户能访问到的表：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_tables；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询Oracle用户表："><a href="#查询Oracle用户表：" class="headerlink" title="查询Oracle用户表："></a>查询Oracle用户表：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_all_tables;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询Oracle用户下的视图："><a href="#查询Oracle用户下的视图：" class="headerlink" title="查询Oracle用户下的视图："></a>查询Oracle用户下的视图：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_views;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询用户下的函数和存储过程"><a href="#查询用户下的函数和存储过程" class="headerlink" title="查询用户下的函数和存储过程"></a>查询用户下的函数和存储过程</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_source;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询当前用户连接："><a href="#查询当前用户连接：" class="headerlink" title="查询当前用户连接："></a>查询当前用户连接：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> v$Session；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询用户下的角色："><a href="#查询用户下的角色：" class="headerlink" title="查询用户下的角色："></a>查询用户下的角色：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_role_privs；</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="查询当前用户权限："><a href="#查询当前用户权限：" class="headerlink" title="查询当前用户权限："></a>查询当前用户权限：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> session_privs;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ORA异常"><a href="#ORA异常" class="headerlink" title="ORA异常"></a>ORA异常</h4><h5 id="ORA-12514-TNS-no-listener"><a href="#ORA-12514-TNS-no-listener" class="headerlink" title="ORA-12514: TNS: no listener"></a>ORA-12514: TNS: no listener</h5><blockquote>
+<p>问题描述：用pl/sql客户端登陆远程Oracle数据库的时候，提示。在服务器登陆是可以的，但是远程客户端无法登陆。</p>
+</blockquote>
+<blockquote>
+<p>解决方案：将服务端的listener.ora中的HOST=127.0.0.1改为HOST=计算机名称，重启listener服务</p>
+</blockquote>
+<h5 id="ORA-00119-ORA-00230"><a href="#ORA-00119-ORA-00230" class="headerlink" title="ORA-00119 ORA-00230"></a>ORA-00119 ORA-00230</h5><p>在一次服务器出问题，重启之后，启动Oracle的时候发现无法启动数据库实例，提示信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ORA-00119: invalid specification for system parameter LOCAL_LISTENER</span><br><span class="line">ORA-00130: invalid listener address (ADDRESS=(PROTOCOL=TCP)(HOST=orcl11g)(PORT=1521))</span><br></pre></td></tr></table></figure>
+
+<p>查找问题发现是由于hosts修改了，名称与hostname及network配置不一致，修改hostname及network，改为与hosts中一致，问题解决。</p>
+<h5 id="ORA-12535：TNS-operation-timed-out-tips"><a href="#ORA-12535：TNS-operation-timed-out-tips" class="headerlink" title="ORA-12535：TNS operation timed out tips"></a>ORA-12535：TNS operation timed out tips</h5><p>原因：请求操作在超时时间范围内未完成</p>
+<p>使用tnsping <code>&lt;servicename&gt;</code> 来确定：</p>
+<ul>
+<li><p>验证名字解析，网络服务名；</p>
+</li>
+<li><p>远程的listener是否已经启动；</p>
+</li>
+</ul>
+<p>tnsping可以测试与远程数据库连接是否正常</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Oracle相关</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2019-12-13 23:18:43</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/数据库/Oracle/Oracle相关/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/Oracle%E6%95%B0%E6%8D%AE%E6%B3%B5%E4%BD%BF%E7%94%A8/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Oracle数据泵使用</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-text">数据迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A9%BA%E8%A1%A8%E4%B8%8D%E8%83%BD%E5%AF%BC%E5%87%BA"><span class="nav-text">空表不能导出</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B3%B5%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">数据泵的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">表空间相关操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3"><span class="nav-text">用户、权限相关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Excel%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90sql"><span class="nav-text">Excel批量生成sql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BAdmp"><span class="nav-text">命令行导入导出dmp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2"><span class="nav-text">递归查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%81%E8%A1%A8"><span class="nav-text">锁表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E8%BF%87%E6%9C%9F%E8%AE%BE%E7%BD%AE"><span class="nav-text">用户过期设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81"><span class="nav-text">字符集编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2"><span class="nav-text">常用查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2Oracle%E7%9B%AE%E5%BD%95%EF%BC%9A"><span class="nav-text">查询Oracle目录：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-text">查询数据文件：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%A1%A8%E7%A9%BA%E9%97%B4%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-text">查询表空间文件：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dba-users%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-text">dba_users查询所有用户信息：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%9A"><span class="nav-text">查询所有表空间的大小：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%A9%BA%E9%97%B2%E8%A1%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%A4%A7%E5%B0%8F%EF%BC%9A"><span class="nav-text">查询空闲表空间的大小：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E8%83%BD%E8%AE%BF%E9%97%AE%E5%88%B0%E7%9A%84%E8%A1%A8%EF%BC%9A"><span class="nav-text">查询当前用户能访问到的表：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2Oracle%E7%94%A8%E6%88%B7%E8%A1%A8%EF%BC%9A"><span class="nav-text">查询Oracle用户表：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2Oracle%E7%94%A8%E6%88%B7%E4%B8%8B%E7%9A%84%E8%A7%86%E5%9B%BE%EF%BC%9A"><span class="nav-text">查询Oracle用户下的视图：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%B8%8B%E7%9A%84%E5%87%BD%E6%95%B0%E5%92%8C%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">查询用户下的函数和存储过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E8%BF%9E%E6%8E%A5%EF%BC%9A"><span class="nav-text">查询当前用户连接：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%88%B7%E4%B8%8B%E7%9A%84%E8%A7%92%E8%89%B2%EF%BC%9A"><span class="nav-text">查询用户下的角色：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%EF%BC%9A"><span class="nav-text">查询当前用户权限：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ORA%E5%BC%82%E5%B8%B8"><span class="nav-text">ORA异常</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ORA-12514-TNS-no-listener"><span class="nav-text">ORA-12514: TNS: no listener</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ORA-00119-ORA-00230"><span class="nav-text">ORA-00119 ORA-00230</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ORA-12535%EF%BC%9ATNS-operation-timed-out-tips"><span class="nav-text">ORA-12535：TNS operation timed out tips</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            Linux 基础环境搭建 |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Linux 基础环境搭建</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-11-05 11:18:06
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>以<font style="color: red;font-size: 18px">CentOS7</font>为例，下载地址</p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7/isos/x86_64/" >http://mirrors.aliyun.com/centos/7/isos/x86_64/<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>不赘述，网络设置桥接模式</p>
+<h4 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens32</span><br></pre></td></tr></table></figure>
+
+<p>ifcfg-ens32</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 网络类型为以太网</span></span><br><span class="line">TYPE=Ethernet</span><br><span class="line"><span class="comment"># 设置固定ip，dhcp 改为 static</span></span><br><span class="line"><span class="comment"># BOOTPROTU=dhcp</span></span><br><span class="line">BOOTPROTU=static</span><br><span class="line"><span class="comment"># 网卡设备名，一定要跟文件名一致</span></span><br><span class="line">DEVICE=ens32</span><br><span class="line"><span class="comment"># 网卡设备名，一定要跟文件名一致</span></span><br><span class="line">NAME=ens32</span><br><span class="line"><span class="comment"># 设定网卡随网络服务启动</span></span><br><span class="line"><span class="comment"># ONBOOT=no</span></span><br><span class="line">ONBOOT=yes</span><br><span class="line"><span class="comment"># 固定ip</span></span><br><span class="line">IPADDR=192.168.40.26</span><br><span class="line"><span class="comment"># 网关</span></span><br><span class="line">GATEWAY=192.168.40.254</span><br><span class="line"><span class="comment"># 子网掩码</span></span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line"><span class="comment"># DNS地址</span></span><br><span class="line">DNS1=8.8.8.8</span><br><span class="line">DNS2=114.114.114.114</span><br></pre></td></tr></table></figure>
+
+<p>重启网络服务，使生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 重启网络服务</span></span><br><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置国内yum源"><a href="#配置国内yum源" class="headerlink" title="配置国内yum源"></a>配置国内yum源</h4><p>查看所有的yum源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist all</span><br></pre></td></tr></table></figure>
+
+<p>查看可用的yum源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist enabled</span><br></pre></td></tr></table></figure>
+
+<p>阿里镜像仓库配置</p>
+<p>根据官网的说明，我们详细说说每步骤的意思。</p>
+<p>（1）备份，将 <code>CentOS-Base.repo</code> 为<code>CentOS-Base.repo.bak</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br></pre></td></tr></table></figure>
+
+<p>（2）下载新的 <code>http://mirrors.aliyun.com/repo/Centos-7.repo</code>，并命名为<code>CentOS-Base.repo</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+
+
+<p>（3）清除缓存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum clean all     # 清除系统所有的yum缓存</span><br><span class="line">yum makecache     # 生成yum缓存</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h4><p>firewalld跟iptables比起来至少有两大好处：</p>
+<ol>
+<li>firewalld可以动态修改单条规则，而不需要像iptables那样，在修改了规则后必须得全部刷新才可以生效；</li>
+<li>firewalld在使用上要比iptables人性化很多，即使不明白“五张表五条链”而且对TCP/IP协议也不理解也可以实现大部分功能。</li>
+</ol>
+<p>firewalld跟iptables比起来，不好的地方是每个服务都需要去设置才能放行，因为默认是拒绝。而iptables里默认是每个服务是允许，需要拒绝的才去限制。</p>
+<p><code>centos7</code>开始默认用的是<code>firewalld</code>，这个是基于<code>iptables</code>的，虽然有<code>iptables</code>的核心，但是<code>iptables</code>的服务是没安装的。</p>
+<h5 id="firewalld"><a href="#firewalld" class="headerlink" title="firewalld"></a>firewalld</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装防火墙</span></span><br><span class="line">yum install firewalld firewall-config</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将接口添加到区域 --zone=public，默认接口都在public</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --permanent 永久加入，没有这个参数重启后失效</span></span><br><span class="line">firewall-cmd --zone=public --add-interface=eth0</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将端口添加到区域 --zone=public，默认接口都在public</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --permanent 永久加入，没有这个参数重启后失效</span></span><br><span class="line">firewall-cmd --add-port=8080/tcp --permanent</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 刷新防火墙设置</span> </span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙中已放开的端口</span></span><br><span class="line">firewall-cmd --list-ports</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看80端口是否开启</span></span><br><span class="line">firewall-cmd --query-port=80/tcp</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙是否开机自启</span></span><br><span class="line">systemctl is-enabled firewalld</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用防火墙，开机自启关闭</span></span><br><span class="line">systemctl disable firewalld</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启用防火墙，开机自启</span></span><br><span class="line">systemctl enable firewalld</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="iptables"><a href="#iptables" class="headerlink" title="iptables"></a>iptables</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 关闭防火墙</span></span><br><span class="line">service iptables stop</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 禁用防火墙，开机自启关闭</span></span><br><span class="line">chkconfig iptables off</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙状态</span></span><br><span class="line">service iptables status</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看开机自启列表</span></span><br><span class="line">chkconfig --list iptables</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="免密运行sudo"><a href="#免密运行sudo" class="headerlink" title="免密运行sudo"></a>免密运行<code>sudo</code></h4><p>在 <code>/etc/sudoers</code>文件中，默认打开的 <code>authenticate </code>参数用于验证目的。如果设置了它，用户必须通过密码（或其他身份验证方法）进行身份验证，然后才能使用 <code>sudo </code>运行命令。但是，可以使用 <code>NOPASSWD </code>（当用户调用 <code>sudo </code>命令时不需要密码）标记来覆盖此默认值。</p>
+<p><strong>root</strong>用户<code>/etc/sudoers</code> 文件只有读的权限，需要给<strong>root</strong>用户写的权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加写权限</span></span><br><span class="line">chmod +w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>/etc/sudoers</code> </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 用户 haung 可以不用密码使用sudo</span></span><br><span class="line">huang    ALL=(ALL)    NOPASSWD: ALL</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 对于组而言，在组名前面使用 % 字符；这意味着 sys 组的所有成员都可以不用密码使用sudo</span></span><br><span class="line"><span class="meta">%</span><span class="bash">sys    ALL=(ALL)    NOPASSWD: ALL</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> sys 组的所有成员都可以不用密码使用sudo运行命令 /bin/<span class="built_in">kill</span></span></span><br><span class="line"><span class="meta">%</span><span class="bash">sys    ALL=(ALL)    NOPASSWD: /bin/<span class="built_in">kill</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> sys 组的所有成员都可以不用密码使用sudo运行命令 /bin/<span class="built_in">kill</span>、/bin/rm</span></span><br><span class="line"><span class="meta">%</span><span class="bash">sys    ALL=(ALL)    NOPASSWD: /bin/<span class="built_in">kill</span>,/bin/rm</span></span><br></pre></td></tr></table></figure>
+
+<p> 操作完成之后记得收回<strong>root</strong>的权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 收回写权限</span></span><br><span class="line">chmod -w /etc/sudoers</span><br></pre></td></tr></table></figure>
+
+<p><font style="color: red">当然，也不用添加权限、收回权限这么麻烦，可以在<strong>root</strong>用户修改完后强制保存</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ESC后，:wq! 强制保存</span></span><br><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SSH免密登录"><a href="#SSH免密登录" class="headerlink" title="SSH免密登录"></a>SSH免密登录</h4><p>原理：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/haojun/p/11131432.html" >https://www.cnblogs.com/haojun/p/11131432.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 工作原理如下图所示：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gitee.com/valten/filebed/raw/master//ssh_nopassword.png"
+                      alt="ssh免密登录"
+                ></p>
+<p>生成公钥和私钥：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 /]$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+
+<p>然后敲（三个回车），就会生成两个文件<code>id_rsa</code>（私钥）、<code>id_rsa.pub</code>（公钥）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 /]$ cd ~/.ssh/</span><br><span class="line">[hisign@hadoop91 .ssh]$ ll</span><br></pre></td></tr></table></figure>
+
+<p>显示</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">总用量 12</span><br><span class="line">-rw-------. 1 hisign hisign 1675 11月  9 09:58 id_rsa</span><br><span class="line">-rw-r--r--. 1 hisign hisign  397 11月  9 09:58 id_rsa.pub</span><br><span class="line">-rw-r--r--. 1 hisign hisign  372 11月  9 09:15 known_hosts</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将公钥拷贝到要免密登录的目标机器上</p>
+<p><code>ssh-copy-id</code>可以把本地主机的公钥复制到远程主机的<code>authorized_keys</code>文件上，<code>ssh-copy-id</code>命令也会给远程主机的用户主目录（<code>home</code>）和<code>~/.ssh</code>, 和<code>~/.ssh/authorized_keys</code>设置合适的权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 给用户hisign配置免密登录</span></span><br><span class="line">[hisign@hadoop91 .ssh]$ ssh-copy-id hadoop91</span><br><span class="line">[hisign@hadoop91 .ssh]$ ssh-copy-id hadoop92</span><br><span class="line">[hisign@hadoop91 .ssh]$ ssh-copy-id hadoop93</span><br></pre></td></tr></table></figure>
+
+<p><font style="color:red">注意</font>：在<strong>hadoop92</strong>和<strong>hadoop93</strong>上把上面的操作都再执行一遍，三台服务器就能互相之间进行免密登录了。如果想要其他用户也能进行免密登录，切换到其他用户执行上操作即可。</p>
+<h4 id="用户密码"><a href="#用户密码" class="headerlink" title="用户密码"></a>用户密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加用户huang</span></span><br><span class="line">useradd huang</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 给用户huang设置密码</span></span><br><span class="line">passwd huang</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除用户huang的密码</span></span><br><span class="line">passwd -d huang</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> LANG=<span class="string">&quot;en_US.UTF-8&quot;</span></span></span><br><span class="line">LANG=&quot;zh_CN.UTF-8&quot;</span><br></pre></td></tr></table></figure>
+
+<p>重新加载配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/locale.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="分发文件"><a href="#分发文件" class="headerlink" title="分发文件"></a>分发文件</h4><h5 id="scp-安全拷贝"><a href="#scp-安全拷贝" class="headerlink" title="scp 安全拷贝"></a>scp 安全拷贝</h5><ul>
+<li>定义：</li>
+</ul>
+<blockquote>
+<p>scp可以实现服务器与服务器之间的数据拷贝。（from server1 to server2）</p>
+</blockquote>
+<p>基本语法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">命令 递归  要拷贝的文件路径/名称  目的用户@主机:目的路径/名称</span></span><br><span class="line">scp   -r   $pdir/$fname          $user@hadoop$host:$pdir/$fname</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>案例</li>
+</ul>
+<p>1、在hadoop91上，将hadoop91中/opt/module目录下的软件拷贝到远程服务器hadoop92上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 /]$ scp -r /opt/module root@hadoop92:/opt/module</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2、在hadoop93上，将远程服务器hadoop91服务器上的/opt/module目录下的软件拷贝到本地。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop93 opt]$sudo scp -r hisign@hadoop91:/opt/module /opt/module</span><br></pre></td></tr></table></figure>
+
+
+
+<p>3、在hadoop93上操作将hadoop91中/opt/module目录下的软件拷贝到hadoop104上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop93 opt]$ scp -r hisign@hadoop91:/opt/module root@hadoop104:/opt/module</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：拷贝过来的/opt/module目录，别忘了在hadoop92、hadoop93、hadoop104上修改所有文件的，所有者和所有者组。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown hisign:hisign -R /opt/module</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4、将hadoop91中/etc/profile文件拷贝到hadoop92的/etc/profile上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 ~]$ sudo scp /etc/profile root@hadoop92:/etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+<p>5、将hadoop91中/etc/profile文件拷贝到hadoop93的/etc/profile上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 ~]$ sudo scp /etc/profile root@hadoop93:/etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+<p>6、将hadoop91中/etc/profile文件拷贝到hadoop104的/etc/profile上。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hisign@hadoop91 ~]$ sudo scp /etc/profile root@hadoop104:/etc/profile</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：拷贝过来的配置文件别忘了 <code>source /etc/profile </code>使生效。</p>
+<h5 id="rsync-远程同步工具"><a href="#rsync-远程同步工具" class="headerlink" title="rsync 远程同步工具"></a>rsync 远程同步工具</h5><p>rsync主要用于备份和镜像。具有速度快、避免复制相同内容和支持符号链接的优点。</p>
+<p>rsync和scp区别：用rsync做文件的复制要比scp的速度快，rsync只对差异文件做更新。scp是把所有文件都复制过去。</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rsync -y</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>基本语法</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 命令 选项参数  要拷贝的文件路径/名称  目的用户@主机:目的路径/名称</span></span><br><span class="line">rsync   -av     $pdir/$fname         $user@hadoop$host:$pdir/$fname</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>案例</li>
+</ul>
+<p>把hadoop91机器上的/opt/software目录同步到hadoop92服务器的root用户下的/opt/目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av /opt/software/ hadoop92:/opt/software</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="xsync-集群分布脚本"><a href="#xsync-集群分布脚本" class="headerlink" title="xsync 集群分布脚本"></a>xsync 集群分布脚本</h5><p>1、需求：循环复制文件到所有节点的相同目录下</p>
+<p>2、需求分析：</p>
+<ul>
+<li>rsync命令原始拷贝：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av   /opt/module  root@hadoop93:/opt/</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>期望脚本：</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xsync 要同步的文件名称</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>说明：在<code>/home/hisign/bin</code>这个目录下存放的脚本，hisign用户可以在系统任何地方直接执行。</li>
+</ul>
+<p>3、脚本实现</p>
+<p>在<code>/home/hisign</code>目录下创建<code>bin</code>目录，并在bin目录下<strong>xsync</strong>创建文件，文件内容如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p  /home/hisign/bin</span><br><span class="line">cd /home/hisign/bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建脚本</span></span><br><span class="line">vim xsync</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在该文件中编写如下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#1 获取输入参数个数，如果没有参数，直接退出</span></span><br><span class="line">pcount=<span class="variable">$#</span></span><br><span class="line"><span class="keyword">if</span> ((pcount==0)); <span class="keyword">then</span></span><br><span class="line"><span class="built_in">echo</span> no args;</span><br><span class="line"><span class="built_in">exit</span>;</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2 获取文件名称</span></span><br><span class="line">p1=<span class="variable">$1</span></span><br><span class="line">fname=`basename <span class="variable">$p1</span>`</span><br><span class="line"><span class="built_in">echo</span> fname=<span class="variable">$fname</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#3 获取上级目录到绝对路径</span></span><br><span class="line">pdir=`<span class="built_in">cd</span> -P $(dirname <span class="variable">$p1</span>); <span class="built_in">pwd</span>`</span><br><span class="line"><span class="built_in">echo</span> pdir=<span class="variable">$pdir</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4 获取当前用户名称</span></span><br><span class="line">user=`whoami`</span><br><span class="line"></span><br><span class="line"><span class="comment">#5 循环</span></span><br><span class="line"><span class="keyword">for</span>((host=91; host&lt;94; host++)); <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> ------------------- hadoop<span class="variable">$host</span> --------------</span><br><span class="line">    rsync -av <span class="variable">$pdir</span>/<span class="variable">$fname</span> <span class="variable">$user</span>@hadoop<span class="variable">$host</span>:<span class="variable">$pdir</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>修改脚本 xsync 具有执行权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 xsync</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>调用脚本形式：xsync 文件名称</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xsync /home/hisign/bin</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：如果将xsync放到<code>/home/hisign/bin</code>目录下仍然不能实现全局使用，可以将xsync移动到<code>/usr/local/bin</code>目录下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /home/hisign/bin/xsync /usr/local/bin</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="插件推荐"><a href="#插件推荐" class="headerlink" title="插件推荐"></a>插件推荐</h4><h5 id="上传下载工具lrzsz"><a href="#上传下载工具lrzsz" class="headerlink" title="上传下载工具lrzsz"></a>上传下载工具<code>lrzsz</code></h5><p>XShell中支持，MobaXterm不支持</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装 lrzsz</span></span><br><span class="line">yum install lrzsz -y</span><br></pre></td></tr></table></figure>
+
+<p><font style="color: red"> 注意：该软件只是用于小文件，比较大的文件还是老老实实用ftp工具吧 </font></p>
+<blockquote>
+<p>lrzsz是Linux/Unix同Windows进行ZModem文件传输的命令行工具。优点就是不用再开一个sftp工具登录上去上传下载文件。<br>rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到Linux服务器<br>sz：将选定的文件发送（send）到本地机器</p>
+</blockquote>
+<h5 id="网络工具包net-tools"><a href="#网络工具包net-tools" class="headerlink" title="网络工具包net-tools"></a>网络工具包<code>net-tools</code></h5><p>ifconfig不存在问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装 net-tools</span></span><br><span class="line">yum install net-tools -y </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="文本编辑器vim"><a href="#文本编辑器vim" class="headerlink" title="文本编辑器vim"></a>文本编辑器<code>vim</code></h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装 net-tools</span></span><br><span class="line">yum install vim -y </span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="下载工具wget"><a href="#下载工具wget" class="headerlink" title="下载工具wget"></a>下载工具<code>wget</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装 wget</span><br><span class="line">yum install wget -y </span><br></pre></td></tr></table></figure>
+
+<h6 id="下载单个文件"><a href="#下载单个文件" class="headerlink" title="下载单个文件"></a>下载单个文件</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.linuxde.net/testfile.zip</span><br></pre></td></tr></table></figure>
+
+<p>以下的例子是从网络下载一个文件并保存在当前目录，在下载的过程中会显示进度条，包含（下载完成百分比，已经下载的字节，当前下载速度，剩余下载时间）。</p>
+<h6 id="下载另存为"><a href="#下载另存为" class="headerlink" title="下载另存为"></a>下载另存为</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
+
+<p>wget默认会以最后一个符合<code>/</code>的后面的字符来命名，对于动态链接的下载通常文件名会不正确。</p>
+<p>错误：下面的例子会下载一个文件并以名称<code>download.aspx?id=1080</code>保存:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.linuxde.net/download?id=1</span><br></pre></td></tr></table></figure>
+
+<p>即使下载的文件是zip格式，它仍然以<code>download.php?id=1080</code>命令。</p>
+<p>正确：为了解决这个问题，我们可以使用参数<code>-O</code>来指定一个文件名：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080</span><br></pre></td></tr></table></figure>
+
+<h6 id="下载多个文件"><a href="#下载多个文件" class="headerlink" title="下载多个文件"></a>下载多个文件</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -i filelist.txt</span><br></pre></td></tr></table></figure>
+
+<p>首先，保存一份下载链接文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; filelist.txt</span><br><span class="line">url1</span><br><span class="line">url2</span><br><span class="line">url3</span><br><span class="line">url4</span><br></pre></td></tr></table></figure>
+
+<p>接着使用这个文件和参数<code>-i</code>下载。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Linux 基础环境搭建</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2020-11-05 11:18:06</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/技术教程/Linux/Linux 基础环境搭建/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/Linux%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux 开发环境搭建</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/ELK%E5%90%8C%E6%AD%A5Oralce%E6%95%B0%E6%8D%AE%E8%87%B3ES/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ELK同步Oralce数据至ES</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%9B%BD%E5%86%85yum%E6%BA%90"><span class="nav-text">配置国内yum源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-text">防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#firewalld"><span class="nav-text">firewalld</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#iptables"><span class="nav-text">iptables</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%8D%E5%AF%86%E8%BF%90%E8%A1%8Csudo"><span class="nav-text">免密运行sudo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="nav-text">SSH免密登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="nav-text">用户密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%8F%91%E6%96%87%E4%BB%B6"><span class="nav-text">分发文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#scp-%E5%AE%89%E5%85%A8%E6%8B%B7%E8%B4%9D"><span class="nav-text">scp 安全拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rsync-%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7"><span class="nav-text">rsync 远程同步工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xsync-%E9%9B%86%E7%BE%A4%E5%88%86%E5%B8%83%E8%84%9A%E6%9C%AC"><span class="nav-text">xsync 集群分布脚本</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90"><span class="nav-text">插件推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7lrzsz"><span class="nav-text">上传下载工具lrzsz</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E5%8C%85net-tools"><span class="nav-text">网络工具包net-tools</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8vim"><span class="nav-text">文本编辑器vim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7wget"><span class="nav-text">下载工具wget</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%8D%95%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="nav-text">下载单个文件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%8F%A6%E5%AD%98%E4%B8%BA"><span class="nav-text">下载另存为</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="nav-text">下载多个文件</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

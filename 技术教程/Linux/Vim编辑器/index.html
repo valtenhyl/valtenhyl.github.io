@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            Vim 编辑器 |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Vim 编辑器</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-04-24 09:17:07
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Vim/">Vim</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="Vim-的命令模式"><a href="#Vim-的命令模式" class="headerlink" title="Vim 的命令模式"></a>Vim 的命令模式</h2><p>使用 Vim 编辑文件时，默认处于命令模式。此模式下，可使用方向键（上、下、左、右键）移动光标的位置，还可以对文件内容进行复制、粘贴、替换、删除等操作。</p>
+<h2 id="Vim-的输入模式"><a href="#Vim-的输入模式" class="headerlink" title="Vim 的输入模式"></a>Vim 的输入模式</h2><p>在输入模式下，Vim 可以对文件执行写操作，类似于在 Windows 系统的文档中输入内容。</p>
+<p>使 Vim 进行输入模式的方式是在命令模式状态下输入 i、I、a、A、o、O 等插入命令（各指令的具体功能如表 3 所示），当编辑文件完成后按 Esc 键即可返回命令模式。</p>
+<table>
+<thead>
+<tr>
+<th align="left">快捷键</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">i</td>
+<td align="left">在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td align="left">o</td>
+<td align="left">在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td align="left">O</td>
+<td align="left">在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td align="left">a</td>
+<td align="left">在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td align="left">A</td>
+<td align="left">在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行a命令</td>
+</tr>
+</tbody></table>
+<p>下图即为 Vim 处于输入模式状态下的示意图。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/190318/2-1Z31Q51U3363.gif"
+                      alt="Vim处于输入模式"
+                ></p>
+<h2 id="Vim-的编辑模式"><a href="#Vim-的编辑模式" class="headerlink" title="Vim 的编辑模式"></a>Vim 的编辑模式</h2><p>编辑模式用于对文件中的指定内容执行保存、查找或替换等操作。</p>
+<p>使 Vim 切换到编辑模式的方法是在命令模式状态下按“：”键，此时 Vim 窗口的左下方出现一个“：”符号，这是就可以输入相关指令进行操作了。</p>
+<p>指令执行后 Vim 会自动返回命令模式。如想直接返回命令模式，按 Esc 即可。</p>
+<p>下图为 Vim 进入编辑模式后的状态。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/190318/2-1Z31Q5192EY.gif"
+                      alt="Vim进行编辑模式"
+                ></p>
+<p>对于新手来说，经常不知道自己处于什么模式。不论是自己忘了，还是不小心切换了模式，都可以按一次 Esc 键返回命令模式。如果你多按几次 Esc 键后听到”嘀————“的声音，则代表你已经处于命令模式了。</p>
+<h2 id="Vim-打开文件"><a href="#Vim-打开文件" class="headerlink" title="Vim 打开文件"></a>Vim 打开文件</h2><p>使用 Vim 打开文件很简单，例如在命令行模式下打开一个自己编写的文件 /test/vi.test，打开方法如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@itxdl ~]<span class="comment"># vim /test/vi.test</span></span><br></pre></td></tr></table></figure>
+
+<p>刚打开文件时 Vim 处于命令模式，此时文件的下方会显示文件的一些信息，包括文件的总行数和字符数，以及当前光标所在的位置等，此时可以使用插入命令进入输入模式对文件进行编辑。</p>
+<p>除此之外，我们还可以利用下表中打开文件的命令格式，针对特定情形使用适当的打开方式，可以大大提高我们的效率。</p>
+<table>
+<thead>
+<tr>
+<th>Vi 使用的选项</th>
+<th>说 明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>vim filename</td>
+<td>打开或新建一个文件，并将光标置于第一行的首部</td>
+</tr>
+<tr>
+<td>vim -r filename</td>
+<td>恢复上次 vim 打开时崩溃的文件</td>
+</tr>
+<tr>
+<td>vim -R filename</td>
+<td>把指定的文件以只读方式放入 Vim 编辑器中</td>
+</tr>
+<tr>
+<td>vim + filename</td>
+<td>打开文件，并将光标置于最后一行的首部</td>
+</tr>
+<tr>
+<td>vi +n filename</td>
+<td>打开文件，并将光标置于第 n 行的首部</td>
+</tr>
+<tr>
+<td>vi +/pattern filename</td>
+<td>打幵文件，并将光标置于第一个与 pattern 匹配的位置</td>
+</tr>
+<tr>
+<td>vi -c command filename</td>
+<td>在对文件进行编辑前，先执行指定的命令</td>
+</tr>
+</tbody></table>
+<h2 id="Vim-编辑文件"><a href="#Vim-编辑文件" class="headerlink" title="Vim 编辑文件"></a>Vim 编辑文件</h2><p>同样，Vim 提供了大量的编辑快捷键，主要可分为以下几类。</p>
+<h3 id="Vim-插入文本"><a href="#Vim-插入文本" class="headerlink" title="Vim 插入文本"></a>Vim 插入文本</h3><p>从命令模式进入输入模式进行编辑，可以按下 I、i、O、o、A、a 等键来完成，使用不同的键，光标所处的位置不同，如表 3 所示。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>在当前光标所在位置插入随后输入的文本，光标后的文本相应向右移动</td>
+</tr>
+<tr>
+<td>I</td>
+<td>在光标所在行的行首插入随后输入的文本，行首是该行的第一个非空白字符，相当于光标移动到行首执行 i 命令</td>
+</tr>
+<tr>
+<td>o</td>
+<td>在光标所在行的下面插入新的一行。光标停在空行首，等待输入文本</td>
+</tr>
+<tr>
+<td>O</td>
+<td>在光标所在行的上面插入新的一行。光标停在空行的行首，等待输入文本</td>
+</tr>
+<tr>
+<td>a</td>
+<td>在当前光标所在位置之后插入随后输入的文本</td>
+</tr>
+<tr>
+<td>A</td>
+<td>在光标所在行的行尾插入随后输入的文本，相当于光标移动到行尾再执行 a 命令</td>
+</tr>
+</tbody></table>
+<h3 id="Vim-查找文本"><a href="#Vim-查找文本" class="headerlink" title="Vim 查找文本"></a>Vim 查找文本</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/abc</td>
+<td>从光标所在位置向前查找字符串 abc</td>
+</tr>
+<tr>
+<td>/^abc</td>
+<td>查找以 abc 为行首的行</td>
+</tr>
+<tr>
+<td>/abc$</td>
+<td>查找以 abc 为行尾的行</td>
+</tr>
+<tr>
+<td>?abc</td>
+<td>从光标所在为主向后查找字符串 abc</td>
+</tr>
+<tr>
+<td>n</td>
+<td>向同一方向重复上次的查找指令</td>
+</tr>
+<tr>
+<td>N</td>
+<td>向相反方向重复上次的查找指定</td>
+</tr>
+</tbody></table>
+<p>例如，在 /etc/passwd.vi 文件中查找字符串 “root”，则运行命令如图所示。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/181008/2-1Q00Q6360L18.jpg"
+                      alt="img"
+                ></p>
+<p>如果在文件中并没有找到所要查找的字符串，则在文件底部会出现 “Pattern not found” 提示，如图所示。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/181008/2-1Q00Q63630S1.jpg"
+                      alt="img"
+                ></p>
+<p>在查找过程中需要注意的是，要查找的字符串是严格区分大小写的，如查找 “shenchao” 和 “ShenChao” 会得到不同的结果。</p>
+<p>如果想忽略大小写，则输入命令 <code>:set ic</code>；调整回来输入<code>:set noic</code>。</p>
+<p>如果在字符串中出现特殊符号，则需要加上转义字符 “&quot;。常见的特殊符号有 \、*、?、$ 等。如果出现这些字符，例如，要查找字符串 “10$”，则需要在命令模式中输入 “/10$“。</p>
+<h3 id="Vim-删除文本"><a href="#Vim-删除文本" class="headerlink" title="Vim 删除文本"></a>Vim 删除文本</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td>删除光标所在位置的字符</td>
+</tr>
+<tr>
+<td>dd</td>
+<td>删除光标所在行</td>
+</tr>
+<tr>
+<td>ndd</td>
+<td>删除当前行（包括此行）后 n 行文本</td>
+</tr>
+<tr>
+<td>dG</td>
+<td>删除光标所在行一直到文件末尾的所有内容</td>
+</tr>
+<tr>
+<td>D</td>
+<td>删除光标位置到行尾的内容</td>
+</tr>
+<tr>
+<td>:a1,a2d</td>
+<td>函数从 a1 行到 a2 行的文本内容</td>
+</tr>
+</tbody></table>
+<p>注意，被删除的内容并没有真正删除，都放在了剪贴板中。将光标移动到指定位置处，按下 “p” 键，就可以将刚才删除的内容又粘贴到此处。</p>
+<h3 id="Vim-复制和粘贴文本"><a href="#Vim-复制和粘贴文本" class="headerlink" title="Vim 复制和粘贴文本"></a>Vim 复制和粘贴文本</h3><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>p</td>
+<td>将剪贴板中的内容粘贴到光标后</td>
+</tr>
+<tr>
+<td>P（大写）</td>
+<td>将剪贴板中的内容粘贴到光标前</td>
+</tr>
+<tr>
+<td>y</td>
+<td>复制已选中的文本到剪贴板</td>
+</tr>
+<tr>
+<td>yy</td>
+<td>将光标所在行复制到剪贴板，此命令前可以加数字 n，可复制多行</td>
+</tr>
+<tr>
+<td>yw</td>
+<td>将光标位置的单词复制到剪贴板</td>
+</tr>
+</tbody></table>
+<h3 id="Vim-其他常用快捷键"><a href="#Vim-其他常用快捷键" class="headerlink" title="Vim 其他常用快捷键"></a>Vim 其他常用快捷键</h3><p>某些情况下，可能需要把两行进行连接。比如说，下面的文件中有两行文本，现在需要将其合并成一行（实际上就是将两行间的换行符去掉）。可以直接在命令模式中按下 “J” 键，按下前后如图所示。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/181008/2-1Q00Q640323F.jpg"
+                      alt="img"
+                ></p>
+<blockquote>
+<p>注意光标得在要合并的上面那一行</p>
+</blockquote>
+<p>如果不小心误删除了文件内容，则可以通过 “u” 键来撤销刚才执行的命令。如果要撤销刚才的多次操作，可以多按几次 “u” 键。</p>
+<h3 id="Vim-保存退出文本"><a href="#Vim-保存退出文本" class="headerlink" title="Vim 保存退出文本"></a>Vim 保存退出文本</h3><p>Vim 的保存和退出是在编辑模式中进行的，其常用命令如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:wq</td>
+<td>保存并退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:wq!</td>
+<td>保存并强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q</td>
+<td>不保存就退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不保存，且强制退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>保存但是不退出 Vim 编辑器</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>强制保存文本</td>
+</tr>
+<tr>
+<td>:w filename</td>
+<td>另存到 filename 文件</td>
+</tr>
+<tr>
+<td>x！</td>
+<td>保存文本，并退出 Vim 编辑器，更通用的一个 vim 命令</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>直接退出 Vim 编辑器</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，<code>w!</code> 和 `wq!1 等类似的指令，通常用于对文件没有写权限的时候（显示 readonly，如图 所示），但如果你是文件的所有者或者 root 用户，就可以强制执行。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="http://c.biancheng.net/uploads/allimg/181008/2-1Q00Q643042W.jpg"
+                      alt="img"
+                ></p>
+<p><strong>参考</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://c.biancheng.net/linux_tutorial/40/" >http://c.biancheng.net/linux_tutorial/40/<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Vim 编辑器</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2020-04-24 09:17:07</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/技术教程/Linux/Vim编辑器/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Docker/Docker%20%E4%B8%AD%E5%AE%89%E8%A3%85%E5%BC%80%E5%8F%91%E8%BD%AF%E4%BB%B6/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Docker 中安装开发软件</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/%E5%90%8E%E7%AB%AF/Java/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Lambda 表达式</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%9A%84%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="nav-text">Vim 的命令模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%9A%84%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="nav-text">Vim 的输入模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%9A%84%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F"><span class="nav-text">Vim 的编辑模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="nav-text">Vim 打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6"><span class="nav-text">Vim 编辑文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E6%8F%92%E5%85%A5%E6%96%87%E6%9C%AC"><span class="nav-text">Vim 插入文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E6%9F%A5%E6%89%BE%E6%96%87%E6%9C%AC"><span class="nav-text">Vim 查找文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E5%88%A0%E9%99%A4%E6%96%87%E6%9C%AC"><span class="nav-text">Vim 删除文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E5%A4%8D%E5%88%B6%E5%92%8C%E7%B2%98%E8%B4%B4%E6%96%87%E6%9C%AC"><span class="nav-text">Vim 复制和粘贴文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-text">Vim 其他常用快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim-%E4%BF%9D%E5%AD%98%E9%80%80%E5%87%BA%E6%96%87%E6%9C%AC"><span class="nav-text">Vim 保存退出文本</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

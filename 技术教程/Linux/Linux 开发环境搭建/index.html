@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            Linux 开发环境搭建 |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Linux 开发环境搭建</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-11-05 16:34:21
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JDK/">JDK</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Nacos/">Nacos</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Nginx/">Nginx</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Zookeeper/">Zookeeper</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><h4 id="查询系统自带的jdk"><a href="#查询系统自带的jdk" class="headerlink" title="查询系统自带的jdk"></a>查询系统自带的jdk</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查询系统自带的jdk</span> </span><br><span class="line">rpm -qa | grep jdk</span><br></pre></td></tr></table></figure>
+
+<p>显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64             </span><br><span class="line">java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64               </span><br><span class="line">java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64      </span><br><span class="line">java-1.7.0-openjdk-headless-1.7.0.111-2.6.7.8.el7.x86_64    </span><br><span class="line">copy-jdk-configs-3.3-10.el7_5.noarch</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="卸载系统自带jdk"><a href="#卸载系统自带jdk" class="headerlink" title="卸载系统自带jdk"></a>卸载系统自带jdk</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 卸载指定jdk</span></span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-1.7.0.111-2.6.7.8.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.111-2.6.7.8.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-1.8.0.102-4.b14.el7.x86_64</span><br><span class="line">rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.102-4.b14.el7.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>或者使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 卸载全部</span></span><br><span class="line">rpm -qa | grep jdk | xargs rpm -e --nodeps</span><br><span class="line"><span class="meta">#</span><span class="bash"> 或者</span></span><br><span class="line">yum remove *openjdk*</span><br></pre></td></tr></table></figure>
+
+<p>之后再次输入<code>rpm -qa | grep java</code> 查看卸载情况：</p>
+<h4 id="安装新的jdk"><a href="#安装新的jdk" class="headerlink" title="安装新的jdk"></a>安装新的jdk</h4><p>首先到官网上下载你想要的jdk，下载完成之后将安装包放到Linux系统指定的文件夹<code>/opt/software</code>下</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入jdk存放目录</span></span><br><span class="line"><span class="built_in">cd</span> /opt/software</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压到指定目录</span></span><br><span class="line">tar <span class="literal">-zxvf</span> jdk<span class="literal">-8u131</span><span class="literal">-linux</span><span class="literal">-x64</span>.tar.gz <span class="literal">-C</span> /usr/local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>输入大写的  <code>G</code>  跳转到文件末尾，在最后面添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1.8.0_131</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</span><br></pre></td></tr></table></figure>
+
+<p>执行profile文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>这样可以使配置不用重启即可立即生效。</p>
+<p>检查新安装的jdk</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p>显示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java version &quot;1.8.0_131&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_131-b11)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)</span><br></pre></td></tr></table></figure>
+
+<p><strong>到此为止，整个安装过程结束。</strong></p>
+<hr>
+<h3 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h3><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><p><a class="link"   target="_blank" rel="noopener" href="https://github.com/alibaba/nacos/releases" >https://github.com/alibaba/nacos/releases <i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到/usr/<span class="built_in">local</span>目录下</span></span><br><span class="line">tar -zxvf nacos-server-1.3.1.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><p>创建服务</p>
+<p>在 <code>/lib/systemd/system</code> 目录下创建 <code>nacos.service</code> 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /lib/systemd/system</span><br></pre></td></tr></table></figure>
+
+<p>创建文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim nacos.service</span><br></pre></td></tr></table></figure>
+
+<p>输入a编辑，输入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nacos</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/nacos/bin/startup.sh -m standalone</span><br><span class="line">ExecReload=/usr/<span class="built_in">local</span>/nacos/bin/shutdown.sh</span><br><span class="line">ExecStop=/usr/<span class="built_in">local</span>/nacos/bin/shutdown.sh</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>按 <code>esc</code> 退出编辑，输入<code>:wq</code>保存并且退出</p>
+<p>进入<code>nacos</code>的<code>bin</code>目录下，修改启动文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nacos/bin</span><br></pre></td></tr></table></figure>
+
+<p>修改文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi startup.sh</span><br></pre></td></tr></table></figure>
+
+<p>按<code>a</code>进入编辑模式，修改<code>jdk</code>路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[ ! -e <span class="string">&quot;<span class="variable">$JAVA_HOME</span>/bin/java&quot;</span> ] &amp;&amp; JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_144</span><br><span class="line"><span class="comment">#[ ! -e &quot;$JAVA_HOME/bin/java&quot; ] &amp;&amp; JAVA_HOME=$HOME/jdk/java</span></span><br><span class="line"><span class="comment">#[ ! -e &quot;$JAVA_HOME/bin/java&quot; ] &amp;&amp; JAVA_HOME=/usr/java</span></span><br><span class="line"><span class="comment">#[ ! -e &quot;$JAVA_HOME/bin/java&quot; ] &amp;&amp; JAVA_HOME=/opt/taobao/java</span></span><br><span class="line"><span class="comment">#[ ! -e &quot;$JAVA_HOME/bin/java&quot; ] &amp;&amp; unset JAVA_HOME</span></span><br></pre></td></tr></table></figure>
+
+<p>其他的配置的四条配置前加 <code>#</code> 注释，按<code>esc</code>退出编辑，<code>:wq</code> 保存并退出</p>
+<p>设置开机启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br><span class="line">systemctl <span class="built_in">enable</span> nacos.service</span><br><span class="line">systemctl start nacos.service</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动nacos"><a href="#启动nacos" class="headerlink" title="启动nacos"></a>启动nacos</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup sh /usr/local/nacos/bin/startup.sh -m standalone &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><h4 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.8.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><strong>历史版本下载</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="http://download.redis.io/releases/" >http://download.redis.io/releases/<i class="fas fa-external-link-alt"></i></a></p>
+<p>安装redis需要<code>gcc</code>编译环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装gcc</span></span><br><span class="line">yum install gcc -y</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="解压-1"><a href="#解压-1" class="headerlink" title="解压"></a>解压</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到/tmp目录下</span></span><br><span class="line">tar -zxvf redis-4.0.8.tar.gz -C /tmp</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入redis源码目录</span></span><br><span class="line">cd /tmp/redis-4.0.8</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译</span></span><br><span class="line">make</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果make报错，添加参数MALLOC=libc执行</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> zmalloc.h:50:31: error: jemalloc/jemalloc.h: No such file or directory，</span></span><br><span class="line">make MALLOC=libc</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line">cd src</span><br><span class="line">make install PREFIX=/usr/local/redis</span><br></pre></td></tr></table></figure>
+
+<p>移动配置文件到安装目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建配置文件目录</span></span><br><span class="line">mkdir -p /usr/local/redis/etc</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将配置文件移到对应目录</span></span><br><span class="line">mv ../redis.conf /usr/local/redis/etc</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/redis/etc/redis.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置redis后台启动：将daemonize no 改成 daemonize yes</span></span><br><span class="line">daemonize yes</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置远程访问：将protected-mode yes 改为 no</span></span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置开机启动-1"><a href="#设置开机启动-1" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.d/rc.local</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在里面添加内容(意思就是开机调用这段开启redis的命令)</span></span><br><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+<p>要想保证开机自启，得确认rc.local是可执行文件，如果不是，添加执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加执行权限</span></span><br><span class="line">chmod +x /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动redis</span></span><br><span class="line">redis-server /usr/local/redis/etc/redis.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止redis</span></span><br><span class="line">pkill redis</span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载redis</span></span><br><span class="line">rm -rf /usr/local/redis  # 删除安装目录</span><br><span class="line">rm -rf /usr/bin/redis-*  # 删除所有redis相关命令脚本</span><br><span class="line">rm -rf /tmp/redis-4.0.8 # 删除redis解压文件夹</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><h4 id="准备-2"><a href="#准备-2" class="headerlink" title="准备"></a>准备</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.9.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><strong>历史版本下载</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://nginx.org/download/" >https://nginx.org/download/<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="解压-2"><a href="#解压-2" class="headerlink" title="解压"></a>解压</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到/tmp目录下</span></span><br><span class="line">tar -zxvf nginx-1.9.0.tar.gz -C /tmp</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>安装依赖插件，默认需要 <strong>zlib</strong>、<strong>openssl</strong> 和 <strong>pcre</strong> 依赖包，其他组件可以根据自己需要选择安装。输入如下命令： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y gcc gcc-c++ zlib zlib-devel openssl openssl-devel pcre pcre-devel</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>gcc：编译器组件，包括C、C++等<br>zlib：数据压缩库<br>openssl：https安全传输协议，默认没有打开<br>pcre：正则表达式库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入nginx目录</span></span><br><span class="line">cd /tmp/nginx-1.9.0</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置，默认安装到/usr/<span class="built_in">local</span>/nginx目录，如果要自定义目录 ./configure --prefix=/usr/<span class="built_in">local</span>/nginx</span></span><br><span class="line">./configure  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置开机启动-2"><a href="#设置开机启动-2" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.local</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在里面添加内容(意思就是开机调用这段开启nginx的命令)</span></span><br><span class="line">/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>要想保证开机自启，得确认rc.local是可执行文件，如果不是，添加执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加执行权限</span></span><br><span class="line">chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./nginx # 启动</span><br><span class="line">./nginx -s stop # 关闭</span><br><span class="line">./nginx -s reload # 重启</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h3><h4 id="准备-3"><a href="#准备-3" class="headerlink" title="准备"></a>准备</h4><p><a class="link"   target="_blank" rel="noopener" href="http://archive.apache.org/dist/zookeeper/" >http://archive.apache.org/dist/zookeeper/<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="解压-3"><a href="#解压-3" class="headerlink" title="解压"></a>解压</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到指定目录</span></span><br><span class="line">tar -zxvf zookeeper-3.4.10.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>新建配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入zookeeper配置文件目录</span></span><br><span class="line">cd /usr/local/zookeeper-3.4.10/conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将zoo_sample.cfg这个文件复制为zoo.cfg (必须是这个文件名)</span></span><br><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure>
+
+<p>修改配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vim zoo.cfg</span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定数据和日志目录</span></span><br><span class="line">dataDir=/usr/local/zookeeper-3.4.10/data</span><br><span class="line">dataLogDir=//usr/local/zookeeper-3.4.10/logs</span><br><span class="line"></span><br><span class="line">cd ../</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建目录存放数据和日志</span></span><br><span class="line">mkdir /usr/local/zookeeper-3.4.10/data</span><br><span class="line">mkdir /usr/local/zookeeper-3.4.10/logs</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置环境变量-1"><a href="#设置环境变量-1" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>输入大写的  <code>G</code>  跳转到文件末尾，在最后面添加：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ZOOKEEPER_HOME=/usr/local/zookeeper-3.4.10</span><br><span class="line">export PATH=$ZOOKEEPER_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>执行profile文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>这样可以使配置不用重启即可立即生效。</p>
+<h4 id="启动zookeeper"><a href="#启动zookeeper" class="headerlink" title="启动zookeeper"></a>启动zookeeper</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/zookeeper-3.4.10/bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./zkServer.sh start</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./zkServer.sh status # 查看状态</span><br><span class="line">./zkServer.sh stop # 停止</span><br><span class="line">./zkCli.sh # 启动客户端</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h4 id="准备-4"><a href="#准备-4" class="headerlink" title="准备"></a>准备</h4><p><a class="link"   target="_blank" rel="noopener" href="http://archive.apache.org/dist/kafka/" >http://archive.apache.org/dist/kafka/<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="解压-4"><a href="#解压-4" class="headerlink" title="解压"></a>解压</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到指定目录</span></span><br><span class="line">tar -zxvf kafka_2.12-2.0.0.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入配置文件目录</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改 server.properties</span></span><br><span class="line">vim server.properties</span><br><span class="line">==============================================================================</span><br><span class="line">broker.id=0 </span><br><span class="line">port=9092 <span class="comment">#端口号 </span></span><br><span class="line">host.name=localhost <span class="comment">#单机可直接用localhost</span></span><br><span class="line">log.dirs=/data/kafka/<span class="built_in">log</span> <span class="comment">#日志存放路径可修改可不修改</span></span><br><span class="line">zookeeper.connect=localhost:2181 <span class="comment">#zookeeper地址和端口，单机配置部署，localhost:2181</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改 zookeeper.properties</span></span><br><span class="line">vim zookeeper.properties</span><br><span class="line">==============================================================================</span><br><span class="line"><span class="comment">#zookeeper数据目录  (可以修改可以不修改)</span></span><br><span class="line">dataDir=/data/kafka/zookeeper/data</span><br><span class="line"><span class="comment">#zookeeper日志目录 （可以修改可以不修改）</span></span><br><span class="line">dataLogDir=/data/kafka/zookeeper/<span class="built_in">log</span></span><br><span class="line">clientPort=2181 </span><br><span class="line">maxClientCnxns=100 </span><br><span class="line">tickTime=2000</span><br></pre></td></tr></table></figure>
+
+<p>创建目录</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/kafka/<span class="built_in">log</span></span><br><span class="line">mkdir -p /data/kafka/zookeeper/data</span><br><span class="line">mkdir -p /data/kafka/zookeeper/<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="新建执行脚本"><a href="#新建执行脚本" class="headerlink" title="新建执行脚本"></a>新建执行脚本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动脚本</span></span><br><span class="line"><span class="comment"># 进入kafka目录下 输入命令：vi  kafkaStart.sh</span></span><br><span class="line">====================================================================</span><br><span class="line">添加内容为：</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment">#启动zookeeper</span></span><br><span class="line">/usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/bin/zookeeper-server-start.sh /usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/config/zookeeper.properties &amp;</span><br><span class="line">sleep 3  <span class="comment">#默默等3秒后执行 </span></span><br><span class="line"><span class="comment">#启动kafka</span></span><br><span class="line">/usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/bin/kafka-server-start.sh /usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/config/server.properties &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止脚本</span></span><br><span class="line"><span class="comment"># 进入kafka目录下 输入命令：vi  kafkaStop.sh</span></span><br><span class="line">====================================================================</span><br><span class="line">添加内容为：</span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment">#停止kafka</span></span><br><span class="line">/usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/bin/kafka-server-stop.sh /usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/config/server.properties &amp;</span><br><span class="line">sleep 3  <span class="comment">#默默等3秒后执行 </span></span><br><span class="line"><span class="comment">#停止zookeeper</span></span><br><span class="line">/usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/bin/zookeeper-server-stop.sh /usr/<span class="built_in">local</span>/kafka_2.12-2.0.0/config/zookeeper.properties &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加脚本执行权限</span></span><br><span class="line">chmod +x kafkaStart.sh</span><br><span class="line">chmod +x kafkaStop.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="设置开机启动-3"><a href="#设置开机启动-3" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.local</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在里面添加内容(意思就是开机调用这段开启kafka的命令)</span></span><br><span class="line">sh /usr/local/kafka/kafkaStart.sh &amp;</span><br></pre></td></tr></table></figure>
+
+<p>要想保证开机自启，得确认rc.local是可执行文件，如果不是，添加执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加执行权限</span></span><br><span class="line">chmod +x /etc/rc.local</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="启动kafka"><a href="#启动kafka" class="headerlink" title="启动kafka"></a>启动kafka</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh /usr/local/kafka/kafkaStart.sh &amp;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Linux 开发环境搭建</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2020-11-05 16:34:21</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/技术教程/Linux/Linux 开发环境搭建/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/Hadoop%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">hadoop入门笔记</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/Linux%20%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux 基础环境搭建</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK"><span class="nav-text">JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%9A%84jdk"><span class="nav-text">查询系统自带的jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6jdk"><span class="nav-text">卸载系统自带jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%96%B0%E7%9A%84jdk"><span class="nav-text">安装新的jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">设置环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nacos"><span class="nav-text">Nacos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B"><span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="nav-text">设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8nacos"><span class="nav-text">启动nacos</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87-1"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B-1"><span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE"><span class="nav-text">设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8-1"><span class="nav-text">设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8redis"><span class="nav-text">启动redis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx"><span class="nav-text">Nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87-2"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B-2"><span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8-2"><span class="nav-text">设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8nginx"><span class="nav-text">启动nginx</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zookeeper"><span class="nav-text">Zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87-3"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B-3"><span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8zookeeper"><span class="nav-text">启动zookeeper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kafka"><span class="nav-text">Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%86%E5%A4%87-4"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B-4"><span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-text">新建执行脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8-3"><span class="nav-text">设置开机启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8kafka"><span class="nav-text">启动kafka</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="浮生若梦，为欢几何">
+    <meta name="author" content="valten">
+    
+    <title>
+        
+            ELK同步Oralce数据至ES |
+        
+        青衫不改の博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gitee.com/valten/filebed/raw/master/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"valtenhyl.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"https://gitee.com/valten/filebed/raw/master/avatar.jpg","favicon":"https://gitee.com/valten/filebed/raw/master/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="青衫不改" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                青衫不改の博客
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">ELK同步Oralce数据至ES</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gitee.com/valten/filebed/raw/master/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">valten</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-11-03 16:43:06
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/">技术教程</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/ELK/">ELK</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/ElasticSearch/">ElasticSearch</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/LogStash/">LogStash</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Kibana/">Kibana</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p> <a class="link"   target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.1.tar.gz" >https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.7.1.tar.gz<i class="fas fa-external-link-alt"></i></a> </p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到指定目录</span></span><br><span class="line">tar -zxvf elasticsearch-6.7.1.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入es安装目录</span></span><br><span class="line">cd /usr/local/elasticsearch-6.7.1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编辑配置文件</span></span><br><span class="line">vim ./config/elasticsearch.yml</span><br></pre></td></tr></table></figure>
+
+<h5 id="elasticsearch-yml"><a href="#elasticsearch-yml" class="headerlink" title="elasticsearch.yml"></a>elasticsearch.yml</h5><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 集群名称</span></span><br><span class="line"><span class="attr">cluster.name:</span> <span class="string">my-application</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点名称</span></span><br><span class="line"><span class="attr">node.name:</span> <span class="string">node-1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据保存地址</span></span><br><span class="line"><span class="attr">path.data:</span> <span class="string">/usr/local/elasticsearch-6.7.1/data</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志保存地址</span></span><br><span class="line"><span class="attr">path.logs:</span> <span class="string">/usr/local/elasticsearch-6.7.1/logs</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ip</span></span><br><span class="line"><span class="attr">network.host:</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 端口</span></span><br><span class="line"><span class="attr">http.port:</span> <span class="number">9200</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 编辑配置文件</span></span><br><span class="line">vim ./config/jvm.options</span><br></pre></td></tr></table></figure>
+
+<h5 id="jvm-options"><a href="#jvm-options" class="headerlink" title="jvm.options"></a>jvm.options</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Xms1g</span><br><span class="line">-Xmx1g</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  注意：<code>elasticsearch</code>启动不能以<code>root</code>用户来进行，所以需要创建一个用户 </p>
+</blockquote>
+<h4 id="创建用户并授权"><a href="#创建用户并授权" class="headerlink" title="创建用户并授权"></a>创建用户并授权</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建用户</span></span><br><span class="line">useradd elsearch</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 授权</span></span><br><span class="line">chown -R elsearch:elsearch /usr/local/elasticsearch-6.7.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换到ES用户启动"><a href="#切换到ES用户启动" class="headerlink" title="切换到ES用户启动"></a>切换到ES用户启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换到es用户</span></span><br><span class="line">su elsearch</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 给用户elsearch设置密码（我没有设置密码）</span></span><br><span class="line">passwd elsearch</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除用户elsearch的密码</span></span><br><span class="line">passwd -d elsearch</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入es目录</span></span><br><span class="line">cd /usr/local/elasticsearch-6.7.1/bin</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./elasticsearch</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 后台启动</span></span><br><span class="line">./elasticsearch -d</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止ES进程"><a href="#停止ES进程" class="headerlink" title="停止ES进程"></a>停止ES进程</h4><p>前台运行： <code>Ctrl + C</code></p>
+<p>后台运行：<code>kill -9 #es进程号</code>，也可以通过执行命令<code>curl -XPOST http://localhost:9200/_cluster/nodes/_shutdown</code>关闭整个集群，<code>curl -XPOST http://localhost:9200/_cluster/nodes/节点标识符/_shutdown</code>关闭单个节点</p>
+<p>查看es进程号<code>ps -ef|grep elasticsearch</code></p>
+<h4 id="启动报错"><a href="#启动报错" class="headerlink" title="启动报错"></a>启动报错</h4><ul>
+<li><p><code>max file descriptors [4096] for elasticsearch process likely too low, increase to at least [65536]</code></p>
+<p>修改<code>/etc/security/limits.conf</code>文件 在文件末尾添加如下内容，然后重启服务器或重新登录即可生效。重启后用查看命令进行查看，如果显示数字等于204800即证明修改成功。如果不成功请继续往下看 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们用的是elsearch用户，而不是root，权限不足。</span></span><br><span class="line"><span class="comment"># 首先用root用户登录，然后修改配置文件:</span></span><br><span class="line"><span class="attribute">su</span> - root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置命令：</span></span><br><span class="line">vim /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果文件是只读文件，修改为可读写</span></span><br><span class="line">chmod <span class="number">666</span> /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看命令:(-n是可以打开最大文件描述符的数量。 -u是用户最大可用的进程数。)</span></span><br><span class="line">ulimit -n</span><br><span class="line">ulimit -u</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加下面的内容：</span></span><br><span class="line">* soft nofile <span class="number">65536</span></span><br><span class="line">* hard nofile <span class="number">65536</span></span><br><span class="line">* soft nproc <span class="number">65536</span></span><br><span class="line">* hard nproc <span class="number">65536</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改为只读</span></span><br><span class="line">chmod <span class="number">222</span> /etc/security/limits.conf</span><br></pre></td></tr></table></figure>
+
+<p>我在解决这个问题时候，发现网上都是说修改这一个文件就行，但是我修改后重新登录发现没更改过来。后来发现，还需要修改两个文件。如果你重启后也没生效，请继续跟着往下修改。 </p>
+<blockquote>
+<p>注：修改<code>90-nproc.conf</code>，如果<code>90-nproc.conf</code>不存在，修改类似的文件即可，即<code>xx-nproc.conf</code>，我本地就是<code>/etc/security/limits.d/20-nproc.conf</code>。 </p>
+</blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加下面的内容：</span></span><br><span class="line">* <span class="attribute">soft</span> nproc <span class="number">65536</span></span><br><span class="line">* hard nproc <span class="number">65536</span></span><br><span class="line">* soft nofile <span class="number">65536</span></span><br><span class="line">* hard nofile <span class="number">65536</span></span><br></pre></td></tr></table></figure>
+
+<p>官方 <code>manual </code>以及网上的教程有很多都用了<code>*</code>符号，然而不是所有系统都认的，比如我在解决这个问题时候，发现<code>ubuntu</code>系统就不支持。最前面一列代表用户名即<code>root</code>和<code>elsearh</code>。 </p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不兼容方式</span></span><br><span class="line">* <span class="attribute">soft</span> nproc <span class="number">65536</span></span><br><span class="line">* hard nproc <span class="number">65536</span></span><br><span class="line">* soft nofile <span class="number">65536</span></span><br><span class="line">* hard nofile <span class="number">65536</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 兼容方式</span></span><br><span class="line">root soft nproc <span class="number">65536</span></span><br><span class="line">root hard nproc <span class="number">65536</span></span><br><span class="line">root soft nofile <span class="number">65536</span></span><br><span class="line">root hard nofile <span class="number">65536</span></span><br><span class="line">elsearch soft nproc <span class="number">65536</span></span><br><span class="line">elsearch hard nproc <span class="number">65536</span></span><br><span class="line">elsearch soft nofile <span class="number">65536</span></span><br><span class="line">elsearch hard nofile <span class="number">65536</span></span><br></pre></td></tr></table></figure>
+
+<p><font style="color: red; font-size: 20px">limits.conf 建议不要使用星号</font></p>
+</li>
+<li><p><code>max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换到root用户</span></span><br><span class="line">su - root</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改配置sysctl.conf</span></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加下面配置：</span></span><br><span class="line">vm.max_map_count=655360</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 并执行命令：</span></span><br><span class="line">sysctl -p</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">然后，重新启动elasticsearch，即可启动成功</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><p>在<code>elasticsearch-head</code>插件地址栏中输入服务器的地址，如：<a href="http://192.168.1.12:9200，很不幸，打不开。下面进行原因排查：">http://192.168.1.12:9200，很不幸，打不开。下面进行原因排查：</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --query-port=9200/tcp</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示no，说明9200端口没有开</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开放80端口，重启防火墙</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --permanent 永久生效，没有此参数重启后失效</span></span><br><span class="line">firewall-cmd --add-port=9200/tcp --permanent</span><br><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="LogStash"><a href="#LogStash" class="headerlink" title="LogStash"></a>LogStash</h3><h4 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h4><p> <a class="link"   target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/logstash/logstash-6.7.1.tar.gz" >https://artifacts.elastic.co/downloads/logstash/logstash-6.7.1.tar.gz<i class="fas fa-external-link-alt"></i></a> </p>
+<h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p> 上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到指定目录</span></span><br><span class="line">tar -zxvf logstash-6.7.1.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><h5 id="新建配置文件"><a href="#新建配置文件" class="headerlink" title="新建配置文件"></a>新建配置文件</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cp logstash-sample.conf logstash-test.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入logstash数据目录</span></span><br><span class="line">cd /usr/local/logstash-6.7.1/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建结果保存目录</span></span><br><span class="line">mkdir metadata</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建抽取脚本目录</span></span><br><span class="line">mkdir sql</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h5><blockquote>
+<p>jdbc_driver_library： 数据库驱动存放位置</p>
+<p>statement_filepath：抽取脚本存放位置</p>
+<p>last_run_metadata_path：运行结果保存位置</p>
+</blockquote>
+<p>部分配置文件</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sample Logstash configuration for creating a simple</span></span><br><span class="line"><span class="comment"># Beats -&gt; Logstash -&gt; Elasticsearch pipeline.</span></span><br><span class="line"></span><br><span class="line"><span class="section">input</span> &#123;</span><br><span class="line">    <span class="section">jdbc</span> &#123;</span><br><span class="line">    	<span class="comment">#驱动地址</span></span><br><span class="line">    	<span class="attribute">jdbc_driver_library</span> =&gt; <span class="string">&quot;/home/xis/ojdbc8-12.2.0.1.jar&quot;</span></span><br><span class="line">	    <span class="comment"># jdbc_driver_class =&gt; &quot;com.mysql.jdbc.Driver&quot;</span></span><br><span class="line">	    jdbc_driver_class =&gt; <span class="string">&quot;Java::oracle.jdbc.driver.OracleDriver&quot;</span></span><br><span class="line">	    jdbc_connection_string =&gt; <span class="string">&quot;jdbc:oracle:thin:@192.168.40.104:1521:hczz&quot;</span></span><br><span class="line">	    jdbc_user =&gt; zdkz</span><br><span class="line">	    jdbc_password =&gt; zdkz</span><br><span class="line">	    <span class="comment">#仅提取自上次运行以来更改的数据一般使用自增id或者使用update_time 最后更新时间</span></span><br><span class="line">	    <span class="comment">#sql 语句文件，也可以直接写SQL，如statement =&gt; &quot;select * from table1&quot;</span></span><br><span class="line">	    <span class="comment">#statement =&gt; &quot;select * from tb_yw_shxx where del = &#x27;0&#x27; and modify_date &gt; :sql_last_value&quot;</span></span><br><span class="line">        statement_filepath =&gt; <span class="string">&quot;/usr/local/logstash-6.7.1/data/sql/shxx.sql&quot;</span></span><br><span class="line">        <span class="comment">#是否使用column 作为增量字段</span></span><br><span class="line">	    use_column_value =&gt; <span class="literal">true</span></span><br><span class="line">	    <span class="comment">#增量字段的类型，目前只有数字(numeric)和时间类型(timestamp)，默认是数字类型</span></span><br><span class="line">	    tracking_column_type =&gt; <span class="string">&quot;timestamp&quot;</span></span><br><span class="line">	    <span class="comment">#以id做为增量值，用于增量同步，需是数据库字段</span></span><br><span class="line">	    tracking_column =&gt; <span class="string">&quot;modify_date&quot;</span></span><br><span class="line">	    <span class="comment">#是否记录上次执行结果，true表示会将上次执行结果的tracking_column字段的值保存到last_run_metadata_path指定的文件中</span></span><br><span class="line">	    record_last_run =&gt; <span class="literal">true</span></span><br><span class="line">	    <span class="comment">#上面运行结果的保存位置</span></span><br><span class="line">	    last_run_metadata_path =&gt; <span class="string">&quot;/usr/local/logstash-6.7.1/data/metadata/shxx&quot;</span>	    </span><br><span class="line">		<span class="comment"># 是否将字段名转换为小写，默认true（如果有数据序列化、反序列化需求，建议改为false）；</span></span><br><span class="line">		lowercase_column_names =&gt; <span class="literal">true</span>       	    </span><br><span class="line">	    <span class="comment">#是否清除last_run_metadata_path的记录，需要增量同步时此字段必须为false</span></span><br><span class="line">	  	clean_run =&gt; <span class="literal">false</span></span><br><span class="line">	  	<span class="comment">#定时设置，corn表达式</span></span><br><span class="line">      	schedule =&gt; <span class="string">&quot;* * * * *&quot;</span></span><br><span class="line">      	<span class="comment">#ES中type</span></span><br><span class="line">      	type =&gt; <span class="string">&quot;shxx&quot;</span></span><br><span class="line">	&#125;	</span><br><span class="line">    jdbc &#123;</span><br><span class="line">    	<span class="comment">#驱动地址</span></span><br><span class="line">    	<span class="attribute">jdbc_driver_library</span> =&gt; <span class="string">&quot;/home/xis/ojdbc8-12.2.0.1.jar&quot;</span></span><br><span class="line">	    <span class="comment"># jdbc_driver_class =&gt; &quot;com.mysql.jdbc.Driver&quot;</span></span><br><span class="line">	    jdbc_driver_class =&gt; <span class="string">&quot;Java::oracle.jdbc.driver.OracleDriver&quot;</span></span><br><span class="line">	    jdbc_connection_string =&gt; <span class="string">&quot;jdbc:oracle:thin:@192.168.40.104:1521:hczz&quot;</span></span><br><span class="line">	    jdbc_user =&gt; zdkz</span><br><span class="line">	    jdbc_password =&gt; zdkz</span><br><span class="line">	    <span class="comment">#仅提取自上次运行以来更改的数据一般使用自增id或者使用update_time 最后更新时间</span></span><br><span class="line">	    <span class="comment">#sql 语句文件，也可以直接写SQL，如statement =&gt; &quot;select * from table1&quot;</span></span><br><span class="line">	    <span class="comment">#statement =&gt; &quot;select * from tb_yw_zdxx where del = &#x27;0&#x27; and modify_date &gt; :sql_last_value order&quot;</span></span><br><span class="line">        statement_filepath =&gt; <span class="string">&quot;/usr/local/logstash-6.7.1/data/sql/zdxx.sql&quot;</span></span><br><span class="line">        <span class="comment">#是否使用column 作为增量字段</span></span><br><span class="line">	    use_column_value =&gt; <span class="literal">true</span></span><br><span class="line">	    <span class="comment">#增量字段的类型，目前只有数字(numeric)和时间类型(timestamp)，默认是数字类型</span></span><br><span class="line">	    tracking_column_type =&gt; <span class="string">&quot;timestamp&quot;</span></span><br><span class="line">	    <span class="comment">#以id做为增量值，用于增量同步，需是数据库字段</span></span><br><span class="line">	    tracking_column =&gt; <span class="string">&quot;modify_date&quot;</span></span><br><span class="line">	    <span class="comment">#是否记录上次执行结果，true表示会将上次执行结果的tracking_column字段的值保存到last_run_metadata_path指定的文件中</span></span><br><span class="line">	    record_last_run =&gt; <span class="literal">true</span></span><br><span class="line">	    <span class="comment">#上面运行结果的保存位置</span></span><br><span class="line">	    last_run_metadata_path =&gt; <span class="string">&quot;/usr/local/logstash-6.7.1/data/metadata/zdxx&quot;</span>	    </span><br><span class="line">		<span class="comment"># 是否将字段名转换为小写，默认true（如果有数据序列化、反序列化需求，建议改为false）；</span></span><br><span class="line">		lowercase_column_names =&gt; <span class="literal">true</span>       	    </span><br><span class="line">	    <span class="comment">#是否清除last_run_metadata_path的记录，需要增量同步时此字段必须为false</span></span><br><span class="line">	  	clean_run =&gt; <span class="literal">false</span></span><br><span class="line">	  	<span class="comment">#定时设置，corn表达式</span></span><br><span class="line">      	schedule =&gt; <span class="string">&quot;* * * * *&quot;</span></span><br><span class="line">		<span class="comment">#ES中type</span></span><br><span class="line">      	type =&gt; <span class="string">&quot;zdxx&quot;</span>      	</span><br><span class="line">	&#125;				    	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">filter &#123;</span><br><span class="line">    <span class="comment"># 解决默认时区与当前时区相差8小时问题</span></span><br><span class="line">	<span class="section">ruby</span> &#123; </span><br><span class="line">		<span class="attribute">code</span> =&gt; <span class="string">&quot;event.set(&#x27;timestamp&#x27;, event.get(&#x27;@timestamp&#x27;).time.localtime + 8*60*60)&quot;</span> </span><br><span class="line">	&#125;</span><br><span class="line">	ruby &#123;</span><br><span class="line">		<span class="attribute">code</span> =&gt; <span class="string">&quot;event.set(&#x27;@timestamp&#x27;,event.get(&#x27;timestamp&#x27;))&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	mutate &#123;</span><br><span class="line">		<span class="attribute">remove_field</span> =&gt; [<span class="string">&quot;timestamp&quot;</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">	if[type] == &quot;shxx&quot;&#123;</span><br><span class="line">		<span class="section">elasticsearch</span> &#123;</span><br><span class="line">			<span class="comment">#ES ip:port</span></span><br><span class="line">			<span class="attribute">hosts</span> =&gt; [<span class="string">&quot;localhost:9200&quot;</span>]</span><br><span class="line">			<span class="comment">#ES索引名</span></span><br><span class="line">			index =&gt; <span class="string">&quot;tb_yw_shxx&quot;</span></span><br><span class="line">			document_type =&gt; <span class="string">&quot;doc&quot;</span></span><br><span class="line">			document_id =&gt; <span class="string">&quot;%&#123;id&#125;&quot;</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if[type] == <span class="string">&quot;zdxx&quot;</span>&#123;</span><br><span class="line">		<span class="section">elasticsearch</span> &#123;</span><br><span class="line">			<span class="comment">#ES ip:port</span></span><br><span class="line">			<span class="attribute">hosts</span> =&gt; [<span class="string">&quot;localhost:9200&quot;</span>]</span><br><span class="line">			<span class="comment">#ES索引名</span></span><br><span class="line">			index =&gt; <span class="string">&quot;tb_yw_zdxx&quot;</span></span><br><span class="line">			document_type =&gt; <span class="string">&quot;doc&quot;</span></span><br><span class="line">			document_id =&gt; <span class="string">&quot;%&#123;id&#125;&quot;</span>	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入logstash安装目录</span></span><br><span class="line">cd /usr/local/logstash-6.7.1/bin</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">logstash -f ../config/logstash-test.conf</span><br></pre></td></tr></table></figure>
+
+<p>后台启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup logstash -f ../config/logstash-test.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><p>查看进程号 <code>ps -ef|grep logstash</code></p>
+<p>杀掉进程 <code>kill -9 #logstash进程号</code></p>
+<h3 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h3><h4 id="下载-2"><a href="#下载-2" class="headerlink" title="下载"></a>下载</h4><p> <a class="link"   target="_blank" rel="noopener" href="https://artifacts.elastic.co/downloads/kibana/kibana-6.7.1.tar.gz" >https://artifacts.elastic.co/downloads/kibana/kibana-6.7.1.tar.gz<i class="fas fa-external-link-alt"></i></a> </p>
+<h4 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h4><p> 上传下载过后的压缩包到自己的服务器目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd /opt/software</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解压到指定目录</span></span><br><span class="line">tar -zxvf kibana-6.7.1.tar.gz -C /usr/local</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-2"><a href="#配置-2" class="headerlink" title="配置"></a>配置</h4><h5 id="kibana-yml"><a href="#kibana-yml" class="headerlink" title="kibana.yml"></a>kibana.yml</h5><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 端口</span></span><br><span class="line"><span class="attr">server.port:</span> <span class="number">5601</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 主机</span></span><br><span class="line"><span class="attr">server.host:</span> <span class="string">&quot;localhost&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># es地址</span></span><br><span class="line"><span class="attr">elasticsearch.url:</span> <span class="string">&quot;http://localhost:9200&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 索引</span></span><br><span class="line"><span class="attr">kibana.index:</span> <span class="string">&quot;.kibana&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入kibana安装目录</span></span><br><span class="line">cd /usr/local/kibana-6.7.1/bin</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动</span></span><br><span class="line">./kibana</span><br></pre></td></tr></table></figure>
+
+<p>后台启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 后台启动</span></span><br><span class="line">nohup ./kibana &amp;</span><br></pre></td></tr></table></figure>
+
+<h4 id="停止-1"><a href="#停止-1" class="headerlink" title="停止"></a>停止</h4><p><font style="color: red; font-size: 20px">ps -ef|grep kibana找不到进程号</font></p>
+<p>查看进程号 <code>fuser -n tcp 5601</code></p>
+<p>杀掉进程 <code>kill -9 #kibana进程号</code></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：ELK同步Oralce数据至ES</li>
+        <li>本文作者：valten</li>
+        <li>创建时间：2020-11-03 16:43:06</li>
+        <li>
+            本文链接：https://valtenhyl.github.io/技术教程/Linux/ELK同步Oralce数据至ES/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/Linux/Linux%20%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Linux 基础环境搭建</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/%E5%90%8E%E7%AB%AF/Mybatis/Mybatis%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Mybatis 逆向工程</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'GPJAUIpAHAYQtmEzR33YKOyK-gzGzoHsz',
+                    appKey: 'MvkbgMw6wP8dda3BN3qALPdc',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '😜 尽情吐槽吧~',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'valten';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">valten</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ElasticSearch"><span class="nav-text">ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#elasticsearch-yml"><span class="nav-text">elasticsearch.yml</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jvm-options"><span class="nav-text">jvm.options</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E6%8E%88%E6%9D%83"><span class="nav-text">创建用户并授权</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0ES%E7%94%A8%E6%88%B7%E5%90%AF%E5%8A%A8"><span class="nav-text">切换到ES用户启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2ES%E8%BF%9B%E7%A8%8B"><span class="nav-text">停止ES进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99"><span class="nav-text">启动报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="nav-text">问题解决</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LogStash"><span class="nav-text">LogStash</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">新建配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">修改配置文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2"><span class="nav-text">停止</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kibana"><span class="nav-text">Kibana</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-2"><span class="nav-text">下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-2"><span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kibana-yml"><span class="nav-text">kibana.yml</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-1"><span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%9C%E6%AD%A2-1"><span class="nav-text">停止</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
